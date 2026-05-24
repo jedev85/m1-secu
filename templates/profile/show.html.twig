@@ -11,4 +11,30 @@
   <dt>Roles</dt><dd>{{ app.user.roles|join(', ') }}</dd>
 </dl>
 <a class="btn btn-primary" href="{{ path('profile_edit') }}">Modifier</a>
+<hr>
+<h2 class="h4">Mes inscriptions</h2>
+{% if app.user.registrations|length > 0 %}
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Evenement</th>
+        <th>Date</th>
+        <th>Statut</th>
+        <th>Inscrit le</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for registration in app.user.registrations %}
+      <tr>
+        <td><a href="{{ path('event_show', {id: registration.event.id}) }}">{{ registration.event.title }}</a></td>
+        <td>{{ registration.event.startsAt|date('d/m/Y H:i') }}</td>
+        <td>{{ registration.status }}</td>
+        <td>{{ registration.registeredAt|date('d/m/Y H:i') }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Aucune inscription pour le moment.</p>
+{% endif %}
 {% endblock %}
