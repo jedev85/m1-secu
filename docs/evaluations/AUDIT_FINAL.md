@@ -1,22 +1,22 @@
 # Audit final
 
-## Consigne etudiant
+## Consigne étudiant
 
-Auditer EventSecure Lab en boite grise avec acces au code, a l'application locale et aux fixtures.
+Auditer EventSecure Lab en boîte grise avec accès au code, à l'application locale et aux fixtures.
 
 ## Livrables attendus
 
 - Rapport d'audit applicatif
-- Tableau des vulnerabilites
-- Trois corrections proposees avec verification
-- Annexe methodologique
+- Tableau des vulnérabilités
+- Trois corrections proposées avec vérification
+- Annexe méthodologique
 
-## Bareme indicatif
+## Barème indicatif
 
-- Methodologie: 20 %
+- Méthodologie: 20 %
 - Identification et qualification: 30 %
-- Preuves controlees: 20 %
-- Remediation: 20 %
-- Qualite de redaction: 10 %
+- Preuves contrôlées: 20 %
+- Remédiation: 20 %
+- Qualité de rédaction: 10 %
 
-La grille detaillee et la correction sont reservees a la branche `teacher`.
+La grille détaillée et la correction sont réservées à la branche `teacher`.

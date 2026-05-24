@@ -1,28 +1,28 @@
 # Session 06 - API et SSRF
 
-## Objectifs pedagogiques
-Auditer une API JSON et une fonctionnalite serveur qui recupere une URL.
+## Objectifs pédagogiques
+Auditer une API JSON et une fonctionnalité serveur qui récupère une URL.
 
 ## Contexte
-L'API expose evenements, utilisateurs, factures et preview URL.
+L'API expose événements, utilisateurs, factures et preview URL.
 
-## Notions abordees
-BOLA, schema de reponse, CORS, SSRF, allowlist, filtrage IP.
+## Notions abordées
+BOLA, schémà de réponse, CORS, SSRF, allowlist, filtrage IP.
 
 ## Parcours dans l'application
 `/api/events`, `/api/users/{id}`, `/api/invoices/{id}`, `/api/preview-url`.
 
-## Exercices etudiants
-N1: inventorier endpoints. N2: identifier donnees excessives. N3: restreindre autorisations et sorties. N4: bloquer IP privees/locales. N5: fiche API.
+## Exercices étudiants
+N1: inventorier endpoints. N2: identifier données excessives. N3: restreindre autorisations et sorties. N4: bloquer IP privées/locales. N5: fiche API.
 
 ## Indices progressifs
-Comparer utilisateur courant et ID demande.
+Comparer utilisateur courant et ID demandé.
 
 ## Points de vigilance
-Tester uniquement avec services locaux controles.
+Tester uniquement avec services locaux contrôlés.
 
 ## Liens OWASP/CWE
-OWASP API1 BOLA, API3 Excessive Data Exposure, CWE-918.
+OWASP API1 BOLA, API3 Excessive Datà Exposure, CWE-918.
 
 ## Livrable attendu
 Rapport API court et patch SSRF.

@@ -1,16 +1,16 @@
 # EventSecure Lab
 
-Application Symfony volontairement vulnerable pour le module M1 cybersecurite "Vulnerabilites web et logiciel".
+Application Symfony volontairement vulnérable pour le module M1 cybersécurité "Vulnérabilités web et logiciel".
 
 ## Avertissements
 
-- Ne jamais deployer cette application en production.
-- Usage strictement pedagogique, local et encadre.
-- Executer dans un environnement isole.
-- Les donnees, comptes, factures et secrets sont fictifs.
+- Ne jamais déployer cette application en production.
+- Usage strictement pédagogique, local et encadré.
+- Exécuter dans un environnement isolé.
+- Les données, comptes, factures et secrets sont fictifs.
 - Plusieurs mauvaises pratiques sont intentionnelles afin de servir d'exercices.
 
-## Demarrage
+## Démarrage
 
 ```bash
 make up
@@ -27,11 +27,11 @@ Comptes de test:
 
 ## Commandes
 
-- `make up`: construit et demarre les containers
-- `make down`: arrete les containers
+- `make up`: construit et démarre les containers
+- `make down`: arrête les containers
 - `make install`: installe Composer, migre et charge les fixtures
 - `make reset`: reconstruit la base et recharge les fixtures
-- `make fixtures`: recharge les donnees
+- `make fixtures`: recharge les données
 - `make test`: lance les tests
 - `make logs`: suit les logs Docker
 - `make shell`: ouvre un shell PHP
@@ -40,7 +40,7 @@ Comptes de test:
 
 ## Surface fonctionnelle
 
-L'application gere utilisateurs, evenements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et previsualisation d'URL.
+L'application gère utilisateurs, événements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et prévisualisation d'URL.
 
 Endpoints API principaux:
 
@@ -51,19 +51,19 @@ Endpoints API principaux:
 - `POST /api/profile`
 - `POST /api/preview-url`
 
-## Branches pedagogiques
+## Branches pédagogiques
 
-- `student`: branche etudiants avec consignes et vulnerabilites.
-- `teacher`: branche formateur avec guides, corrections, grilles et exemples de remediation.
+- `student`: branche étudiants avec consignes et vulnérabilités.
+- `teacher`: branche formateur avec guides, corrections, grilles et exemples de remédiation.
 
 ## Organisation
 
 - `src/`: application Symfony
 - `templates/`: vues Twig
-- `docs/`: deroule pedagogique et sujets
-- `native-lab/`: mini-lab C pour memoire et fuzzing
+- `docs/`: déroulé pédagogique et sujets
+- `native-lab/`: mini-lab C pour mémoire et fuzzing
 - `docker/`: PHP-FPM et Nginx
 
 ## Limites connues
 
-Le projet a ete scaffold sans acces reseau Packagist dans l'environnement de creation. `composer install` doit etre lance dans un environnement ayant acces a Packagist, ou via cache Composer interne.
+Le projet à été scaffold sans accès réseau Packagist dans l'environnement de création. `composer install` doit être lancé dans un environnement ayant accès à Packagist, ou vià cache Composer interne.

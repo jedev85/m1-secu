@@ -1,25 +1,25 @@
-# Session 08 - Chaine d'approvisionnement logicielle et CVE
+# Session 08 - Chaîne d'approvisionnement logicielle et CVE
 
-## Objectifs pedagogiques
-Comprendre l'audit de dependances Composer et la qualification d'une CVE.
+## Objectifs pédagogiques
+Comprendre l'audit de dépendances Composer et la qualification d'une CVE.
 
 ## Contexte
-Le projet utilise des dependances Symfony classiques.
+Le projet utilise des dépendances Symfony classiques.
 
-## Notions abordees
-Dependances directes/transitives, advisories, versioning, exceptions.
+## Notions abordées
+Dépendances directes/transitives, advisories, versioning, exceptions.
 
 ## Parcours dans l'application
-`composer.json`, `composer.lock` apres installation, `docs/supply-chain.md`.
+`composer.json`, `composer.lock` après installation, `docs/supply-chain.md`.
 
-## Exercices etudiants
-N1: lister dependances. N2: lancer audit. N3: qualifier une alerte. N4: proposer plan de mise a jour. N5: fiche supply chain.
+## Exercices étudiants
+N1: lister dépendances. N2: lancer audit. N3: qualifier une alerte. N4: proposer un plan de mise à jour. N5: fiche supply chain.
 
 ## Indices progressifs
-Comparer risque theorique et exploitabilite dans le contexte.
+Comparer risque théorique et exploitabilité dans le contexte.
 
 ## Points de vigilance
-Ne pas ajouter de dependance dangereuse inutile.
+Ne pas ajouter de dépendance dangereuse inutile.
 
 ## Liens OWASP/CWE
 OWASP A06 Vulnerable and Outdated Components.

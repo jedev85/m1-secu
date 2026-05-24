@@ -1,25 +1,25 @@
 # Session 02 - SQL Injection
 
-## Objectifs pedagogiques
-Comprendre l'injection SQL par concatenation et corriger avec des requetes parametrees.
+## Objectifs pédagogiques
+Comprendre l'injection SQL par concaténation et corriger avec des requêtes paramétrées.
 
 ## Contexte
-La recherche evenement utilise une implementation fragile.
+La recherche événement utilise une implémentation fragile.
 
-## Notions abordees
-Requete parametree, Doctrine DBAL, ORM, validation, logs de requetes.
+## Notions abordées
+Requête paramétrée, Doctrine DBAL, ORM, validation, logs de requêtes.
 
 ## Parcours dans l'application
-Page `/events`, parametre `q`, repository des evenements.
+Page `/events`, paramètre `q`, repository des événements.
 
-## Exercices etudiants
-N1: localiser la recherche. N2: demontrer un comportement anormal local. N3: remplacer par un parametre lie. N4: ajouter tests et limites de recherche. N5: fiche SQLi.
+## Exercices étudiants
+N1: localiser la recherche. N2: démontrer un comportement anormal local. N3: remplacer par un paramètre lié. N4: ajouter tests et limites de recherche. N5: fiche SQLi.
 
 ## Indices progressifs
 Comparer `findPublished()` et la recherche avec `q`.
 
 ## Points de vigilance
-Pas d'exfiltration avancee, pas de payload destructeur.
+Pas d'exfiltration avancée, pas de payload destructeur.
 
 ## Liens OWASP/CWE
 OWASP A03 Injection, CWE-89.

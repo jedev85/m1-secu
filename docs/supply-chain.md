@@ -1,4 +1,4 @@
-# Chaine d'approvisionnement logicielle
+# Chaîne d'approvisionnement logicielle
 
 ## Commandes utiles
 
@@ -7,7 +7,7 @@ composer audit
 composer outdated --direct
 ```
 
-Si un frontend Node est ajoute:
+Si un frontend Node est ajouté:
 
 ```bash
 npm audit
@@ -16,7 +16,7 @@ npm outdated
 
 ## Exercices
 
-- Identifier les dependances directes et transitives.
-- Lire un avis CVE et determiner l'exploitabilite locale.
-- Proposer une strategie de mise a jour.
+- Identifier les dépendances directes et transitives.
+- Lire un avis CVE et déterminer l'exploitabilité locale.
+- Proposer une stratégie de mise à jour.
 - Documenter les exceptions temporaires.

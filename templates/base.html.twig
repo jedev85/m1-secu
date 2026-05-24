@@ -12,12 +12,12 @@
   <div class="container">
     <a class="navbar-brand" href="{{ path('event_index') }}">EventSecure Lab</a>
     <div class="navbar-nav ms-auto">
-      <a class="nav-link" href="{{ path('event_index') }}">Evenements</a>
+      <a class="nav-link" href="{{ path('event_index') }}">Événements</a>
       {% if app.user %}
         <a class="nav-link" href="{{ path('invoice_index') }}">Factures</a>
         <a class="nav-link" href="{{ path('profile_show') }}">Profil</a>
         {% if is_granted('ROLE_ADMIN') %}<a class="nav-link" href="{{ path('admin_dashboard') }}">Admin</a>{% endif %}
-        <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+        <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
       {% else %}
         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
@@ -27,7 +27,7 @@
 </nav>
 <main class="container py-4">
   <div class="alert alert-warning">
-    Lab volontairement vulnerable, usage local pedagogique uniquement. Ne jamais deployer en production.
+    Lab volontairement vulnérable, usage local pédagogique uniquement. Ne jamais déployer en production.
   </div>
   {% for label, messages in app.flashes %}
     {% for message in messages %}<div class="alert alert-{{ label }}">{{ message }}</div>{% endfor %}

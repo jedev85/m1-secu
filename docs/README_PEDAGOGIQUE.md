@@ -1,30 +1,30 @@
-# Guide pedagogique etudiant
+# Guide pédagogique étudiant
 
-## Objectif general
+## Objectif général
 
-Faire auditer et corriger progressivement une application metier realiste. La matiere excede volontairement le temps disponible afin de permettre une selection selon le niveau.
+Faire auditer et corriger progressivement une application métier réaliste. La matière excède volontairement le temps disponible afin de permettre une sélection selon le niveau.
 
 ## Progression
 
 Chaque session propose cinq niveaux:
 
 1. Observation et identification
-2. Exploitation controlee en local
+2. Exploitation contrôlée en local
 3. Correction
-4. Amelioration et durcissement
-5. Redaction d'une fiche d'audit
+4. Amélioration et durcissement
+5. Rédaction d'une fiche d'audit
 
-## Regles de lab
+## Règles de lab
 
 - Pas d'attaque hors environnement local.
-- Pas de donnees reelles.
-- Pas de publication de payloads ou rapports contenant des informations personnelles reelles.
-- Les corrections doivent etre justifiees par un risque, une preuve et un test.
+- Pas de données réelles.
+- Pas de publication de payloads ou rapports contenant des informations personnelles réelles.
+- Les corrections doivent être justifiées par un risque, une preuve et un test.
 
-## Livrables recurrents
+## Livrables récurrents
 
 - Capture ou trace locale minimale.
 - Analyse cause racine.
-- Correctif propose.
-- Test ou verification.
-- Fiche d'audit courte: contexte, impact, preuve, remediation.
+- Correctif proposé.
+- Test ou vérification.
+- Fiche d'audit courte: contexte, impact, preuve, remédiation.

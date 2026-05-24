@@ -1,19 +1,19 @@
 # Session 07 - Secrets, Logs, Hardening
 
-## Objectifs pedagogiques
+## Objectifs pédagogiques
 Identifier secrets fictifs, logs trop bavards et configuration perfectible.
 
 ## Contexte
-Le lab contient volontairement des exemples de mauvaises pratiques documentees.
+Le lab contient volontairement des exemples de mauvaises pratiques documentées.
 
-## Notions abordees
-Secret management, hygiene Git, redaction logs, headers securite, cookies.
+## Notions abordées
+Secret management, hygiène Git, rédaction logs, en-têtes sécurité, cookies.
 
 ## Parcours dans l'application
-Profil, logs Symfony, `docs/bad-practices.md`, configuration de securite.
+Profil, logs Symfony, `docs/bad-practices.md`, configuration de sécurité.
 
-## Exercices etudiants
-N1: reperer les donnees sensibles. N2: produire une trace locale. N3: rediger des logs sobres. N4: ajouter en-tetes et configuration cookies. N5: fiche durcissement.
+## Exercices étudiants
+N1: repérer les données sensibles. N2: produire une trace locale. N3: rédiger des logs sobres. N4: ajouter en-têtes et configuration cookies. N5: fiche durcissement.
 
 ## Indices progressifs
 Chercher `demo_card`, `APP_SECRET`, remember-me.

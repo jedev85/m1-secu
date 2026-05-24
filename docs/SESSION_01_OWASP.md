@@ -1,25 +1,25 @@
 # Session 01 - OWASP
 
-## Objectifs pedagogiques
-Cartographier l'application, relier les constats au Top 10 OWASP et produire les premieres fiches d'audit.
+## Objectifs pédagogiques
+Cartographier l'application, relier les constats au Top 10 OWASP et produire les premières fiches d'audit.
 
 ## Contexte
-Les etudiants decouvrent EventSecure Lab comme application de gestion d'evenements.
+Les étudiants découvrent EventSecure Lab comme application de gestion d'événements.
 
-## Notions abordees
-OWASP Top 10, CWE, surface d'attaque, preuve controlee, criticite.
+## Notions abordées
+OWASP Top 10, CWE, surface d'attaque, preuve contrôlée, criticité.
 
 ## Parcours dans l'application
-Accueil, login, profil, evenements, factures, admin visible/non visible, API publique.
+Accueil, login, profil, événements, factures, admin visible/non visible, API publique.
 
-## Exercices etudiants
-N1: lister les fonctionnalites. N2: identifier cinq risques probables. N3: proposer une correction par risque. N4: ajouter des controles transverses. N5: rediger une fiche d'audit.
+## Exercices étudiants
+N1: lister les fonctionnalités. N2: identifier cinq risques probables. N3: proposer une correction par risque. N4: ajouter des contrôles transverses. N5: rédiger une fiche d'audit.
 
 ## Indices progressifs
-Observer les routes, formulaires, parametres numeriques, uploads et reponses JSON.
+Observer les routes, formulaires, paramètres numériques, uploads et réponses JSON.
 
 ## Points de vigilance
-Rester local, ne pas scanner de services externes, separer preuve et exploitation avancee.
+Rester local, ne pas scanner de services externes, séparer preuve et exploitation avancée.
 
 ## Liens OWASP/CWE
 OWASP A01, A03, A05, A07. CWE-79, CWE-89, CWE-352, CWE-639.

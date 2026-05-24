@@ -1,19 +1,19 @@
 # Session 03 - XSS et CSRF
 
-## Objectifs pedagogiques
-Identifier une XSS stockee et une action sensible sans protection CSRF.
+## Objectifs pédagogiques
+Identifier une XSS stockée et une action sensible sans protection CSRF.
 
 ## Contexte
-Les commentaires evenement sont affiches aux autres utilisateurs.
+Les commentaires événement sont affichés aux autres utilisateurs.
 
-## Notions abordees
-Echappement de sortie, contexte HTML, token CSRF, actions POST.
+## Notions abordées
+Échappement de sortie, contexte HTML, token CSRF, actions POST.
 
 ## Parcours dans l'application
-Detail evenement, ajout et suppression de commentaire.
+Détail événement, ajout et suppression de commentaire.
 
-## Exercices etudiants
-N1: reperer les sorties utilisateur. N2: provoquer une preuve visuelle locale. N3: supprimer `raw` et ajouter token CSRF. N4: tester la regression. N5: fiche XSS/CSRF.
+## Exercices étudiants
+N1: repérer les sorties utilisateur. N2: provoquer une preuve visuelle locale. N3: supprimer `raw` et ajouter token CSRF. N4: tester la régression. N5: fiche XSS/CSRF.
 
 ## Indices progressifs
 Inspecter Twig et les formulaires POST.

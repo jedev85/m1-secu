@@ -1,25 +1,25 @@
-# Session 09 - Concepts memoire
+# Session 09 - Concepts mémoire
 
-## Objectifs pedagogiques
-Illustrer les erreurs memoire natives hors Symfony/PHP.
+## Objectifs pédagogiques
+Illustrer les erreurs mémoire natives hors Symfony/PHP.
 
 ## Contexte
-Le sous-dossier `native-lab` contient des programmes C de demonstration.
+Le sous-dossier `native-lab` contient des programmes C de démonstration.
 
-## Notions abordees
+## Notions abordées
 Pile, tampon, limites, crash, AddressSanitizer.
 
 ## Parcours dans l'application
-Passer de Symfony au lab C independant.
+Passer de Symfony au lab C indépendant.
 
-## Exercices etudiants
-N1: compiler. N2: provoquer un crash simple. N3: activer flags de debug. N4: expliquer les protections. N5: fiche memoire.
+## Exercices étudiants
+N1: compiler. N2: provoquer un crash simple. N3: activer flags de debug. N4: expliquer les protections. N5: fiche mémoire.
 
 ## Indices progressifs
-Lire le Makefile native avant d'executer.
+Lire le Makefile natif avant d'exécuter.
 
 ## Points de vigilance
-Pas d'exploit avance, objectif crash et analyse.
+Pas d'exploit avancé, objectif crash et analyse.
 
 ## Liens OWASP/CWE
 CWE-120, CWE-787.

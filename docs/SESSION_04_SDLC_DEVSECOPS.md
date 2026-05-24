@@ -1,28 +1,28 @@
 # Session 04 - SDLC DevSecOps
 
-## Objectifs pedagogiques
-Integrer securite, tests et audit dans un cycle de developpement.
+## Objectifs pédagogiques
+Intégrer sécurité, tests et audit dans un cycle de développement.
 
 ## Contexte
-L'application evolue par petits correctifs atomiques.
+L'application évolue par petits correctifs atomiques.
 
-## Notions abordees
-Definition of done securite, tests, revue, CI, `composer audit`.
+## Notions abordées
+Définition of done sécurité, tests, revue, CI, `composer audit`.
 
 ## Parcours dans l'application
-Selectionner une vulnerabilite deja vue et construire une verification.
+Sélectionner une vulnérabilité déjà vue et construire une vérification.
 
-## Exercices etudiants
-N1: decrire un flux de travail. N2: ajouter un test fonctionnel. N3: automatiser une commande d'audit. N4: proposer des controles bloquants CI. N5: fiche processus.
+## Exercices étudiants
+N1: décrire un flux de travail. N2: ajouter un test fonctionnel. N3: automatiser une commande d'audit. N4: proposer des contrôles bloquants CI. N5: fiche processus.
 
 ## Indices progressifs
 Partir de `Makefile`, `phpunit.xml.dist`, `docs/supply-chain.md`.
 
 ## Points de vigilance
-Ne pas confondre outil et controle reel.
+Ne pas confondre outil et contrôle réel.
 
 ## Liens OWASP/CWE
 OWASP SAMM, ASVS, A06 Vulnerable Components.
 
 ## Livrable attendu
-Mini pipeline de controles et criteres d'acceptation.
+Mini pipeline de contrôles et critères d'acceptation.

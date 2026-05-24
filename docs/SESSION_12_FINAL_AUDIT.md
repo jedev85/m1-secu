@@ -1,22 +1,22 @@
 # Session 12 - Audit final
 
-## Objectifs pedagogiques
-Realiser une restitution complete d'audit applicatif.
+## Objectifs pédagogiques
+Réaliser une restitution complète d'audit applicatif.
 
 ## Contexte
-Evaluation finale sur EventSecure Lab.
+Évaluation finale sur EventSecure Lab.
 
-## Notions abordees
-Synthese, priorisation, preuve controlee, remediation, soutenance.
+## Notions abordées
+Synthèse, priorisation, preuve contrôlée, remédiation, soutenance.
 
 ## Parcours dans l'application
-Perimetre complet hors services externes.
+Périmètre complet hors services externes.
 
-## Exercices etudiants
-N1: cartographie. N2: preuves locales. N3: corrections ciblees. N4: plan hardening. N5: rapport final.
+## Exercices étudiants
+N1: cartographie. N2: preuves locales. N3: corrections ciblées. N4: plan de durcissement. N5: rapport final.
 
 ## Indices progressifs
-Relire les sessions 01 a 11 et eviter les doublons.
+Relire les sessions 01 à 11 et éviter les doublons.
 
 ## Points de vigilance
 Respecter le temps, prioriser les risques exploitables.

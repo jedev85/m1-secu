@@ -6,8 +6,8 @@
 <dl>
   <dt>Nom</dt><dd>{{ app.user.fullName }}</dd>
   <dt>Email</dt><dd>{{ app.user.email }}</dd>
-  <dt>Societe</dt><dd>{{ app.user.company }}</dd>
-  <dt>Telephone</dt><dd>{{ app.user.phone }}</dd>
+  <dt>Société</dt><dd>{{ app.user.company }}</dd>
+  <dt>Téléphone</dt><dd>{{ app.user.phone }}</dd>
   <dt>Roles</dt><dd>{{ app.user.roles|join(', ') }}</dd>
 </dl>
 <a class="btn btn-primary" href="{{ path('profile_edit') }}">Modifier</a>

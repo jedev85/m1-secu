@@ -1,4 +1,4 @@
-# Mauvaises pratiques simulees
+# Mauvaises pratiques simulées
 
 Ce fichier contient uniquement des exemples fictifs pour discussion.
 
@@ -10,6 +10,6 @@ DEMO_DATABASE_PASSWORD=app
 
 Questions:
 
-- Pourquoi ces valeurs ne doivent-elles pas etre dans Git ?
-- Comment distinguer secret reel, secret de demo et configuration locale ?
-- Quelles traces doivent etre purgees dans les logs et tickets ?
+- Pourquoi ces valeurs ne doivent-elles pas être dans Git ?
+- Comment distinguer secret réel, secret de démo et configuration locale ?
+- Quelles traces doivent être purgées dans les logs et tickets ?

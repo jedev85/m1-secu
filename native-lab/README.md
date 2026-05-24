@@ -1,6 +1,6 @@
 # Laboratoire natif
 
-Mini-lab C pour illustrer erreurs memoire et fuzzing introductif. Il est independant de Symfony.
+Mini-lab C pour illustrer erreurs mémoire et fuzzing introductif. Il est indépendant de Symfony.
 
 ## Compilation
 
@@ -14,7 +14,7 @@ make
 make asan
 ```
 
-## Demonstration buffer
+## Démonstration buffer
 
 ```bash
 ./buffer_overflow_demo texte_court
@@ -29,4 +29,4 @@ Objectif: observer un crash ou un rapport sanitizer, pas construire un exploit.
 make fuzz-smoke
 ```
 
-Le script genere quelques entrees locales pour `parser_fuzz_target`. Les etudiants peuvent enrichir le corpus et corriger le parseur.
+Le script génère quelques entrées locales pour `parser_fuzz_target`. Les étudiants peuvent enrichir le corpus et corriger le parseur.

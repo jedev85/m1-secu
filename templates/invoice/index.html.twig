@@ -3,13 +3,13 @@
 {% block body %}
 <h1>Factures</h1>
 <table class="table table-striped">
-  <tr><th>Numero</th><th>Date</th><th>Montant</th><th></th></tr>
+  <tr><th>Numéro</th><th>Date</th><th>Montant</th><th></th></tr>
   {% for invoice in invoices %}
   <tr>
     <td>{{ invoice.number }}</td>
     <td>{{ invoice.issuedAt|date('d/m/Y') }}</td>
     <td>{{ (invoice.amountCents / 100)|number_format(2, ',', ' ') }} EUR</td>
-    <td><a href="{{ path('invoice_download', {id: invoice.id}) }}">Telecharger</a></td>
+    <td><a href="{{ path('invoice_download', {id: invoice.id}) }}">Télécharger</a></td>
   </tr>
   {% endfor %}
 </table>

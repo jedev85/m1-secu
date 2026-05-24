@@ -6,11 +6,11 @@ EventSecure Lab est une application Symfony 7 avec PHP 8.3, PostgreSQL, Doctrine
 
 - Web: routes Symfony et templates Twig.
 - API: endpoints JSON dans `ApiController`.
-- Persistence: entites Doctrine `User`, `Event`, `Registration`, `Comment`, `Invoice`.
-- Authentification: login formulaire, roles `ROLE_USER` et `ROLE_ADMIN`.
+- Persistence: entités Doctrine `User`, `Event`, `Registration`, `Comment`, `Invoice`.
+- Authentification: login formulaire, rôles `ROLE_USER` et `ROLE_ADMIN`.
 - Fichiers: avatars dans `public/uploads/avatars`, factures dans `var/invoices`.
-- Native lab: exercices C independants dans `native-lab`.
+- Native lab: exercices C indépendants dans `native-lab`.
 
 ## Points d'observation
 
-Les etudiants doivent analyser les controles d'acces, la validation des entrees, la configuration de securite, les logs et les choix de stockage.
+Les étudiants doivent analyser les contrôles d'accès, la validation des entrées, la configuration de sécurité, les logs et les choix de stockage.
