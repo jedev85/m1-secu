@@ -1,4 +1,4 @@
-# Session 08 - Supply Chain et CVE
+# Session 08 - Chaine d'approvisionnement logicielle et CVE
 
 ## Objectifs pedagogiques
 Comprendre l'audit de dependances Composer et la qualification d'une CVE.

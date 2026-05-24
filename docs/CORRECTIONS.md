@@ -49,7 +49,7 @@ Cause: faux secrets documentes, `APP_SECRET` faible, log de carte fictive.
 
 Correction: `.env.local`, vault/variables d'environnement, rotation, redaction des logs, niveaux minimaux et retention.
 
-## Session 08 - Supply Chain
+## Session 08 - Chaine d'approvisionnement logicielle
 
 Correction attendue: `composer audit`, qualification des advisories, mise a jour par lot maitrise, tests de non regression.
 

@@ -10,10 +10,10 @@ Le lab contient volontairement des exemples de mauvaises pratiques documentees.
 Secret management, hygiene Git, redaction logs, headers securite, cookies.
 
 ## Parcours dans l'application
-Profil, logs Symfony, `docs/bad-practices.md`, configuration Security.
+Profil, logs Symfony, `docs/bad-practices.md`, configuration de securite.
 
 ## Exercices etudiants
-N1: reperer les donnees sensibles. N2: produire une trace locale. N3: redacter les logs. N4: ajouter headers et config cookies. N5: fiche hardening.
+N1: reperer les donnees sensibles. N2: produire une trace locale. N3: rediger des logs sobres. N4: ajouter en-tetes et configuration cookies. N5: fiche durcissement.
 
 ## Indices progressifs
 Chercher `demo_card`, `APP_SECRET`, remember-me.
@@ -25,4 +25,4 @@ Ne jamais introduire de vrais secrets.
 OWASP A05, A09. CWE-532, CWE-798.
 
 ## Livrable attendu
-Checklist hardening et patch de logs.
+Checklist de durcissement et patch de logs.

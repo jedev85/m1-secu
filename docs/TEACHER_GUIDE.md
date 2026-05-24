@@ -8,7 +8,7 @@ EventSecure Lab sert de fil rouge sur 42h presentiel et 21h FOAD. La branche `te
 
 - Sessions 01 a 03: prise en main, OWASP, SQLi, XSS/CSRF.
 - Sessions 04 a 06: SDLC, access control, API/SSRF.
-- Sessions 07 a 08: hardening, secrets, logs, supply chain.
+- Sessions 07 a 08: durcissement, secrets, logs, chaine d'approvisionnement logicielle.
 - Sessions 09 a 10: memoire et fuzzing dans `native-lab`.
 - Sessions 11 a 12: methodologie puis audit final.
 

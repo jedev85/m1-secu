@@ -22,7 +22,7 @@
 18. Lecture de code: determiner l'impact d'un CORS `*`.
 19. QCM: Quel livrable est attendu pour une fiche d'audit ?
 20. Vrai/Faux: Une correction doit etre accompagnee d'une verification.
-21. QCM: Quel risque couvre OWASP A05 Security Misconfiguration ?
+21. QCM: Quel risque couvre OWASP A05 mauvaise configuration de securite ?
 22. Lecture de code: identifier une donnee sensible fictive dans un contexte de log.
 23. QCM: Quel controle manque sur `/api/users/{id}` ?
 24. Vrai/Faux: Une faille locale pedagogique doit etre documentee.

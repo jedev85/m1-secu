@@ -1,6 +1,6 @@
 # Architecture
 
-EventSecure Lab est une application Symfony 7 avec PHP 8.3, PostgreSQL, Doctrine ORM, Twig et Symfony Security.
+EventSecure Lab est une application Symfony 7 avec PHP 8.3, PostgreSQL, Doctrine ORM, Twig et le composant Security de Symfony.
 
 ## Modules
 

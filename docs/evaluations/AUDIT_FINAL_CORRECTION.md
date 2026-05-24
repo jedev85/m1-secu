@@ -13,7 +13,7 @@ Minimum attendu:
 - Upload insuffisamment valide.
 - SSRF sur preview URL.
 - Logs contenant une donnee sensible fictive.
-- Security misconfiguration: CORS large, headers incomplets, route admin secondaire.
+- Mauvaise configuration de securite: CORS large, en-tetes incomplets, route admin secondaire.
 
 ## Grille detaillee
 

@@ -13,7 +13,7 @@ Definition of done securite, tests, revue, CI, `composer audit`.
 Selectionner une vulnerabilite deja vue et construire une verification.
 
 ## Exercices etudiants
-N1: decrire un workflow. N2: ajouter un test fonctionnel. N3: automatiser une commande d'audit. N4: proposer gates CI. N5: fiche processus.
+N1: decrire un flux de travail. N2: ajouter un test fonctionnel. N3: automatiser une commande d'audit. N4: proposer des controles bloquants CI. N5: fiche processus.
 
 ## Indices progressifs
 Partir de `Makefile`, `phpunit.xml.dist`, `docs/supply-chain.md`.
