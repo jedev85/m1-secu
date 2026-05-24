@@ -1,4 +1,4 @@
-# README pedagogique
+# Guide pedagogique etudiant
 
 ## Objectif general
 
@@ -11,7 +11,7 @@ Chaque session propose cinq niveaux:
 1. Observation et identification
 2. Exploitation controlee en local
 3. Correction
-4. Amelioration et hardening
+4. Amelioration et durcissement
 5. Redaction d'une fiche d'audit
 
 ## Regles de lab

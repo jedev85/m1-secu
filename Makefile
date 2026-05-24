@@ -25,7 +25,7 @@ fixtures:
 	$(PHP) php bin/console doctrine:fixtures:load --no-interaction
 
 test:
-	$(PHP) php bin/phpunit
+	$(PHP) php vendor/bin/phpunit
 
 logs:
 	$(DC) logs -f --tail=100

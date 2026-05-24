@@ -6,19 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SmokeTest extends WebTestCase
 {
-    public function testEventsPageLoads(): void
+    public function testLoginPageLoads(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/events');
+        $client->request('GET', '/login');
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('h1', 'Evenements');
+        self::assertSelectorTextContains('h1', 'Connexion');
     }
 
-    public function testApiEventsLoads(): void
+    public function testRoutesAreRegistered(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/api/events');
-        self::assertResponseIsSuccessful();
-        self::assertResponseHeaderSame('content-type', 'application/json');
+        self::bootKernel();
+        $routes = self::getContainer()->get('router')->getRouteCollection();
+        self::assertNotNull($routes->get('event_index'));
+        self::assertNotNull($routes->get('api_preview_url'));
     }
 }

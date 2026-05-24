@@ -1,4 +1,4 @@
-# Native Lab
+# Laboratoire natif
 
 Mini-lab C pour illustrer erreurs memoire et fuzzing introductif. Il est independant de Symfony.
 

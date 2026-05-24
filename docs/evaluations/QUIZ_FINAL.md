@@ -18,7 +18,7 @@
 14. Decrire un plan de patch dependency.
 15. Expliquer un crash memoire C simple.
 16. Decrire le role d'AddressSanitizer.
-17. Expliquer le principe d'un fuzz target.
+17. Expliquer le principe d'une cible de fuzzing.
 18. Differencier crash, exploit et preuve pedagogique.
 19. Identifier une requete SQL injectable.
 20. Proposer une requete parametree.
@@ -31,14 +31,14 @@
 27. Decrire un test fonctionnel d'API.
 28. Identifier une route admin mal protegee.
 29. Citer deux risques de remember-me.
-30. Expliquer la separation student/teacher.
+30. Expliquer la separation branche etudiants/branche formateur.
 31. Citer trois preuves acceptables dans un rapport.
 32. Prioriser cinq vulnerabilites.
 33. Rediger une synthese executive courte.
 34. Expliquer defense in depth.
 35. Expliquer least privilege.
-36. Proposer un hardening Docker.
+36. Proposer un durcissement Docker.
 37. Expliquer pourquoi ne pas commiter de vrais secrets.
-38. Decrire un workflow DevSecOps minimal.
+38. Decrire un flux de travail DevSecOps minimal.
 39. Proposer une strategie de regression securite.
 40. Donner une grille CVSS qualitative simple.

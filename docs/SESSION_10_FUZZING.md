@@ -10,7 +10,7 @@ Comprendre l'approche par generation d'entrees et detection de crash.
 Corpus, oracle de crash, sanitizers, minimisation.
 
 ## Parcours dans l'application
-Compiler et executer le fuzz target sur des entrees locales.
+Compiler et executer la cible de fuzzing sur des entrees locales.
 
 ## Exercices etudiants
 N1: lire le parseur. N2: generer entrees simples. N3: trouver un crash. N4: corriger la limite. N5: fiche fuzzing.

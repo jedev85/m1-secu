@@ -53,8 +53,8 @@ Endpoints API principaux:
 
 ## Branches pedagogiques
 
-- `student`: version etudiants avec consignes et vulnerabilites.
-- `teacher`: version formateur avec guides, corrections, grilles et exemples de remediation.
+- `student`: branche etudiants avec consignes et vulnerabilites.
+- `teacher`: branche formateur avec guides, corrections, grilles et exemples de remediation.
 
 ## Organisation
 
