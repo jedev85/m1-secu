@@ -4,6 +4,15 @@
 
 EventSecure Lab sert de fil rouge sur 42h presentiel et 21h FOAD. La branche `teacher` contient les corrections et pistes d'animation. La branche `student` doit rester la seule distribuee aux etudiants.
 
+Pour tenir un volume long, utiliser conjointement:
+
+- `PROGRAMME_62H.md` pour le rythme horaire;
+- `STUDENT_WORKBOOK.md` pour les consignes distribuees;
+- `EXERCISE_BANK.md` pour adapter la difficulte;
+- `TEACHER_SESSION_NOTES.md` pour l'animation;
+- `REMEDIATION_PLAYBOOK.md` pour les corrections techniques;
+- `GRADING_RUBRIC.md` pour l'evaluation.
+
 ## Deroule conseille
 
 - Sessions 01 a 03: prise en main, OWASP, SQLi, XSS/CSRF.
@@ -31,3 +40,16 @@ Commencer chaque faille par observation puis laisser les etudiants formuler l'im
 ## Variantes rapides
 
 Pour un groupe avance, demander un voter Symfony pour factures et un test fonctionnel par correction. Pour un groupe debutant, se limiter a l'identification et a la fiche d'audit.
+
+## Flux metier a expliquer
+
+Le flux evenement sert de colonne vertebrale:
+
+1. un utilisateur consulte un evenement;
+2. il s'inscrit;
+3. une inscription devient visible dans son profil;
+4. une facture fictive est generee;
+5. les routes facture/API deviennent auditables;
+6. les commentaires alimentent XSS/CSRF.
+
+Ce point est important: sans ce flux, les etudiants ont l'impression que les evenements sont decoratifs. Il faut le demontrer des la session 01.
