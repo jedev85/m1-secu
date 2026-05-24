@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}Admin{% endblock %}
+{% block body %}
+<h1>Admin</h1>
+<div class="row">
+  <div class="col"><div class="card"><div class="card-body"><strong>{{ users }}</strong><br>utilisateurs</div></div></div>
+  <div class="col"><div class="card"><div class="card-body"><strong>{{ events }}</strong><br>evenements</div></div></div>
+  <div class="col"><div class="card"><div class="card-body"><strong>{{ comments }}</strong><br>commentaires</div></div></div>
+</div>
+<a class="btn btn-outline-secondary mt-3" href="{{ path('admin_reports') }}">Rapports</a>
+{% endblock %}

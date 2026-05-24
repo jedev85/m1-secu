@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier profil{% endblock %}
+{% block body %}
+<h1>Modifier profil</h1>
+<form method="post" enctype="multipart/form-data" class="col-md-6">
+  <input class="form-control mb-2" name="fullName" value="{{ app.user.fullName }}">
+  <input class="form-control mb-2" type="email" name="email" value="{{ app.user.email }}">
+  <input class="form-control mb-2" name="company" value="{{ app.user.company }}">
+  <input class="form-control mb-2" name="phone" value="{{ app.user.phone }}">
+  <label class="form-label">Avatar</label>
+  <input class="form-control mb-3" type="file" name="avatar">
+  <button class="btn btn-primary">Enregistrer</button>
+</form>
+{% endblock %}

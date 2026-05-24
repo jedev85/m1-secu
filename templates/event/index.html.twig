@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Evenements{% endblock %}
+{% block body %}
+<h1>Evenements</h1>
+<form class="row g-2 mb-4" method="get">
+  <div class="col-md-8"><input class="form-control" name="q" value="{{ q }}" placeholder="Rechercher un evenement ou une ville"></div>
+  <div class="col"><button class="btn btn-outline-primary">Rechercher</button></div>
+</form>
+<div class="row g-3">
+  {% for event in events %}
+    <div class="col-md-6">
+      <div class="card event-card h-100">
+        <div class="card-body">
+          <h2 class="h5">{{ raw_results ? event.title : event.title }}</h2>
+          <p>{{ raw_results ? event.location : event.location }} - {{ raw_results ? event.starts_at|date('d/m/Y H:i') : event.startsAt|date('d/m/Y H:i') }}</p>
+          <a class="btn btn-sm btn-primary" href="{{ path('event_show', {id: raw_results ? event.id : event.id}) }}">Voir</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p>Aucun evenement.</p>
+  {% endfor %}
+</div>
+{% endblock %}

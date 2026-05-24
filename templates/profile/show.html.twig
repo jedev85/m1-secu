@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}Profil{% endblock %}
+{% block body %}
+<h1>Profil</h1>
+{% if app.user.avatarPath %}<img src="{{ app.user.avatarPath }}" class="avatar mb-3" alt="avatar">{% endif %}
+<dl>
+  <dt>Nom</dt><dd>{{ app.user.fullName }}</dd>
+  <dt>Email</dt><dd>{{ app.user.email }}</dd>
+  <dt>Societe</dt><dd>{{ app.user.company }}</dd>
+  <dt>Telephone</dt><dd>{{ app.user.phone }}</dd>
+  <dt>Roles</dt><dd>{{ app.user.roles|join(', ') }}</dd>
+</dl>
+<a class="btn btn-primary" href="{{ path('profile_edit') }}">Modifier</a>
+{% endblock %}

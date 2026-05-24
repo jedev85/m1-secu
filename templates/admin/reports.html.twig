@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Rapports{% endblock %}
+{% block body %}
+<h1>Rapports internes</h1>
+<ul>
+  {% for user in recentUsers %}
+    <li>{{ user.email }} - {{ user.roles|join(', ') }} - {{ user.internalNote }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

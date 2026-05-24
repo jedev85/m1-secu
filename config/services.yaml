@@ -6,6 +6,9 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+    bind:
+      string $uploadsDir: '%uploads_dir%'
+      string $invoicesDir: '%invoices_dir%'
 
   App\:
     resource: '../src/'

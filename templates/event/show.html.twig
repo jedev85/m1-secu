@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ event.title }}{% endblock %}
+{% block body %}
+<h1>{{ event.title }}</h1>
+<p class="lead">{{ event.location }} - {{ event.startsAt|date('d/m/Y H:i') }}</p>
+<p>{{ event.description }}</p>
+<form method="post" action="{{ path('event_register', {id: event.id}) }}">
+  <button class="btn btn-success">S'inscrire</button>
+</form>
+<hr>
+<h2 class="h4">Commentaires</h2>
+{% if app.user %}
+<form method="post" action="{{ path('comment_create', {id: event.id}) }}" class="mb-3">
+  <textarea class="form-control mb-2" name="content" rows="3" placeholder="Votre commentaire"></textarea>
+  <button class="btn btn-primary">Publier</button>
+</form>
+{% endif %}
+{% for comment in event.comments %}
+  <div class="comment">
+    <strong>{{ comment.author.fullName }}</strong>
+    <small>{{ comment.createdAt|date('d/m/Y H:i') }}</small>
+    <div>{{ comment.content|raw }}</div>
+    {% if app.user %}
+    <form method="post" action="{{ path('comment_delete', {id: comment.id}) }}">
+      <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+    </form>
+    {% endif %}
+  </div>
+{% endfor %}
+{% endblock %}

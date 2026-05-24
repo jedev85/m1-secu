@@ -1,0 +1,5 @@
+body { background: #f7f7f8; }
+.event-card { border-left: 4px solid #3858e9; }
+.comment { background: white; border: 1px solid #ddd; border-radius: 6px; padding: 1rem; margin-bottom: .75rem; }
+.avatar { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; }
+pre { white-space: pre-wrap; }
