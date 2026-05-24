@@ -4,9 +4,31 @@
 <h1>{{ event.title }}</h1>
 <p class="lead">{{ event.location }} - {{ event.startsAt|date('d/m/Y H:i') }}</p>
 <p>{{ event.description }}</p>
-<form method="post" action="{{ path('event_register', {id: event.id}) }}">
-  <button class="btn btn-success">S'inscrire</button>
-</form>
+<div class="row g-3 mb-4">
+  <div class="col-md-8">
+    <div class="border rounded p-3 bg-light">
+      <strong>Inscriptions</strong>
+      <div>{{ registrationCount }} inscrit(s) / {{ event.capacity }} places</div>
+      <div>{{ remainingSeats }} place(s) restantes</div>
+      {% if registration %}
+        <div class="badge text-bg-success mt-2">Vous etes inscrit depuis le {{ registration.registeredAt|date('d/m/Y H:i') }}</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-4">
+    {% if app.user %}
+      {% if registration %}
+        <a class="btn btn-outline-primary w-100" href="{{ path('invoice_index') }}">Voir mes factures</a>
+      {% else %}
+        <form method="post" action="{{ path('event_register', {id: event.id}) }}">
+          <button class="btn btn-success w-100">S'inscrire</button>
+        </form>
+      {% endif %}
+    {% else %}
+      <a class="btn btn-success w-100" href="{{ path('app_login') }}">Se connecter pour s'inscrire</a>
+    {% endif %}
+  </div>
+</div>
 <hr>
 <h2 class="h4">Commentaires</h2>
 {% if app.user %}
