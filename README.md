@@ -42,6 +42,26 @@ Comptes de test:
 
 L'application gère utilisateurs, événements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et prévisualisation d'URL.
 
+Les pages evenement sont aussi des pages d'atelier. Chaque evenement affiche:
+
+- le scenario metier de la faille;
+- les zones de test;
+- les notions travaillees;
+- un parcours N1 a N5;
+- les livrables;
+- les criteres de verification;
+- les points de vigilance.
+
+Parcours metier conseille pour comprendre le lab:
+
+1. Se connecter avec `user1@example.test`.
+2. Ouvrir un evenement depuis `/events`.
+3. Lire le bloc "Atelier associe": il indique la zone de test liee au theme de l evenement.
+4. S'inscrire: le detail evenement affiche le statut d'inscription.
+5. Aller dans `/profile`: l'inscription apparait dans "Mes inscriptions".
+6. Aller dans `/invoices`: une facture fictive alimente les exercices IDOR/API.
+7. Publier un commentaire pour les exercices XSS/CSRF.
+
 Endpoints API principaux:
 
 - `GET /api/events`

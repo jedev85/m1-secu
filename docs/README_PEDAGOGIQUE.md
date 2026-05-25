@@ -25,6 +25,17 @@ Chaque session propose cinq niveaux:
 
 - Capture ou trace locale minimale.
 - Analyse cause racine.
-- Correctif proposé.
-- Test ou vérification.
-- Fiche d'audit courte: contexte, impact, preuve, remédiation.
+- Correctif propose.
+- Test ou verification.
+- Fiche d'audit courte: contexte, impact, preuve, remediation.
+
+## Documents a utiliser
+
+- `PROGRAMME_62H.md`: decoupage horaire et rythme conseille.
+- `STUDENT_WORKBOOK.md`: consignes detaillees par session.
+- `EXERCISE_BANK.md`: exercices supplementaires par theme et niveau.
+- `FOAD_GUIDE.md`: travaux asynchrones et journal d'audit.
+- `evaluations/`: quiz et sujet d'audit final.
+- `session-*`: points d'entree rapides par seance.
+
+Les fiches `SESSION_*` donnent la synthese. Le workbook donne la matiere operationnelle. La banque d'exercices permet d'ajuster le volume selon le niveau du groupe.
