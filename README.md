@@ -1,6 +1,6 @@
 # EventSecure Lab
 
-Application Symfony volontairement vulnerable pour le module M1 cybersécurité "Vulnerabilites web et logiciel".
+Application Symfony locale pour l’exercice M1 cybersécurité de rapport JSON sur API.
 
 ## Avertissements
 
@@ -8,7 +8,7 @@ Application Symfony volontairement vulnerable pour le module M1 cybersécurité 
 - Usage strictement pédagogique, local et encadre.
 - Executer dans un environnement isole.
 - Les données, comptes, factures et secrets sont fictifs.
-- Plusieurs mauvaises pratiques sont intentionnelles afin de servir d'exercices.
+- Le périmètre d’audit est limité aux 5 endpoints listés dans la consigne.
 
 ## Demarrage
 
@@ -42,46 +42,33 @@ Comptes de test:
 
 L’application gere utilisateurs, événements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et previsualisation d'URL.
 
-Les pages événement sont aussi des pages d'atelier. Chaque événement affiche:
-
-- le scénario métier de la faille;
-- les zones de test;
-- les notions travaillees;
-- un parcours N1 a N5;
-- les livrables;
-- les critères de vérification;
-- les points de vigilance.
-
 Parcours métier conseille pour comprendre le lab:
 
 1. Se connecter avec `user1@example.test`.
 2. Ouvrir un événement depuis `/events`.
-3. Lire le bloc "Atelier associé": il indique la zone de test liée au thème de l’événement.
-4. S’inscrire: le détail’événement affiche le statut d'inscription.
-5. Aller dans `/profile`: l'inscription apparaît dans "Mes inscriptions".
-6. Aller dans `/invoices`: une facture fictive alimente les exercices IDOR/API.
-7. Publier un commentaire pour les exercices XSS/CSRF.
+3. S’inscrire: le détail événement affiche le statut d'inscription.
+4. Aller dans `/profile`: l'inscription apparaît dans "Mes inscriptions".
+5. Aller dans `/invoices`: une facture fictive est disponible.
+6. Publier un commentaire pour vérifier le parcours métier.
 
 Endpoints API principaux:
 
 - `GET /api/events`
-- `GET /api/events/{id}`
 - `GET /api/users/{id}`
 - `GET /api/invoices/{id}`
 - `POST /api/profile`
 - `POST /api/preview-url`
 
-## Branches pédagogiques
+Consigne du rapport JSON:
 
-- `student`: branche etudiants avec consignes et vulnérabilités.
-- `teacher`: branche formateur avec guides, corrections, grilles et exemples de remédiation.
+- `docs/rapport-vulnerabilites-etudiant.md`
+- `docs/rapport-vulnerabilites-etudiant.pdf`
 
 ## Organisation
 
 - `src/`: application Symfony
 - `templates/`: vues Twig
-- `docs/`: deroule pédagogique et sujets
-- `native-lab/`: mini-lab C pour mémoire et fuzzing
+- `docs/`: consigne du rapport JSON
 - `docker/`: PHP-FPM et Nginx
 
 ## Limites connues

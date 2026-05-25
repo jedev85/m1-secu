@@ -23,7 +23,7 @@ class EventRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function vulnerableSearch(string $term): array
+    public function search(string $term): array
     {
         $sql = "SELECT * FROM event WHERE published = true AND (LOWER(title) LIKE LOWER('%".$term."%') OR LOWER(location) LIKE LOWER('%".$term."%')) ORDER BY starts_at ASC";
         return $this->connection->fetchAllAssociative($sql);

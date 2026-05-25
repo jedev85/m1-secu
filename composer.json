@@ -1,6 +1,6 @@
 {
   "name": "eventsecure/eventsecure-lab",
-  "description": "Application Symfony volontairement vulnerable pour un module M1 cybersecurite.",
+  "description": "Application Symfony locale pour un exercice M1 cybersecurite.",
   "type": "project",
   "license": "MIT",
   "require": {

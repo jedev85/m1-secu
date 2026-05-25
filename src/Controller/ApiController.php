@@ -28,18 +28,6 @@ class ApiController extends AbstractController
         ], $events->findPublished()));
     }
 
-    #[Route('/events/{id}', methods: ['GET'])]
-    public function event(Event $event): JsonResponse
-    {
-        return $this->json([
-            'id' => $event->getId(),
-            'title' => $event->getTitle(),
-            'description' => $event->getDescription(),
-            'location' => $event->getLocation(),
-            'capacity' => $event->getCapacity(),
-        ]);
-    }
-
     #[Route('/users/{id}', methods: ['GET'])]
     public function user(User $user): JsonResponse
     {
