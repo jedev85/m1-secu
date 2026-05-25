@@ -46,10 +46,11 @@ Parcours metier conseille pour comprendre le lab:
 
 1. Se connecter avec `user1@example.test`.
 2. Ouvrir un evenement depuis `/events`.
-3. S'inscrire: le detail evenement affiche le statut d'inscription.
-4. Aller dans `/profile`: l'inscription apparait dans "Mes inscriptions".
-5. Aller dans `/invoices`: une facture fictive alimente les exercices IDOR/API.
-6. Publier un commentaire pour les exercices XSS/CSRF.
+3. Lire le bloc "Atelier associe": il indique la zone de test liee au theme de l evenement.
+4. S'inscrire: le detail evenement affiche le statut d'inscription.
+5. Aller dans `/profile`: l'inscription apparait dans "Mes inscriptions".
+6. Aller dans `/invoices`: une facture fictive alimente les exercices IDOR/API.
+7. Publier un commentaire pour les exercices XSS/CSRF.
 
 Endpoints API principaux:
 

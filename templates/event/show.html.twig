@@ -30,7 +30,34 @@
   </div>
 </div>
 <hr>
-<h2 class="h4">Commentaires</h2>
+<section class="mb-4" id="lab">
+  <h2 class="h4">Atelier associe: {{ lab.theme }}</h2>
+  <p>{{ lab.goal }}</p>
+  <div class="row g-3">
+    <div class="col-md-5">
+      <div class="border rounded p-3 h-100">
+        <strong>Zones de test</strong>
+        <ul class="mb-0">
+          {% for entrypoint in lab.entrypoints %}
+            <li><a href="{{ entrypoint.href }}">{{ entrypoint.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="border rounded p-3 h-100">
+        <strong>Travail attendu</strong>
+        <ol class="mb-0">
+          {% for task in lab.tasks %}
+            <li>{{ task }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+<h2 class="h4" id="comments">Commentaires</h2>
 {% if app.user %}
 <form method="post" action="{{ path('comment_create', {id: event.id}) }}" class="mb-3">
   <textarea class="form-control mb-2" name="content" rows="3" placeholder="Votre commentaire"></textarea>

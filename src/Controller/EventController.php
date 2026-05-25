@@ -41,6 +41,7 @@ class EventController extends AbstractController
 
         return $this->render('event/show.html.twig', [
             'event' => $event,
+            'lab' => $this->labForEvent($event),
             'registration' => $registration,
             'registrationCount' => $event->getRegistrations()->count(),
             'remainingSeats' => max(0, $event->getCapacity() - $event->getRegistrations()->count()),
@@ -103,5 +104,171 @@ class EventController extends AbstractController
         $em->remove($comment);
         $em->flush();
         return $this->redirectToRoute('event_show', ['id' => $eventId]);
+    }
+
+    private function labForEvent(Event $event): array
+    {
+        $title = strtolower($event->getTitle());
+
+        if (str_contains($title, 'sql injection')) {
+            return [
+                'theme' => 'SQL Injection',
+                'goal' => 'Tester la recherche evenement et relier le comportement observe au repository.',
+                'entrypoints' => [
+                    ['label' => 'Recherche evenement', 'href' => $this->generateUrl('event_index').'?q=Lyon'],
+                    ['label' => 'Fiche session SQLi', 'href' => '/docs/SESSION_02_SQLI.md'],
+                ],
+                'tasks' => [
+                    'Observer le parametre q sur la liste des evenements.',
+                    'Comparer recherche normale et entree atypique.',
+                    'Localiser la construction SQL cote repository.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'xss') || str_contains($title, 'csrf')) {
+            return [
+                'theme' => 'XSS stockee et CSRF',
+                'goal' => 'Utiliser les commentaires de cet evenement comme zone de test navigateur.',
+                'entrypoints' => [
+                    ['label' => 'Commentaires de cette page', 'href' => '#comments'],
+                    ['label' => 'Fiche session XSS/CSRF', 'href' => '/docs/SESSION_03_XSS_CSRF.md'],
+                ],
+                'tasks' => [
+                    'Publier un commentaire avec un contenu HTML controle.',
+                    'Verifier le rendu avec un autre compte.',
+                    'Examiner la suppression de commentaire.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'api') || str_contains($title, 'ssrf')) {
+            return [
+                'theme' => 'API, BOLA et SSRF',
+                'goal' => 'Relier les donnees evenement, utilisateur et facture aux endpoints JSON.',
+                'entrypoints' => [
+                    ['label' => 'API evenements', 'href' => '/api/events'],
+                    ['label' => 'API utilisateur de demo', 'href' => '/api/users/1'],
+                    ['label' => 'Preview URL', 'href' => '/api/preview-url'],
+                    ['label' => 'Fiche session API/SSRF', 'href' => '/docs/SESSION_06_API_SSRF.md'],
+                ],
+                'tasks' => [
+                    'Comparer les donnees web et JSON.',
+                    'Tester les identifiants directs sur utilisateurs et factures.',
+                    'Analyser la fonctionnalite de preview URL.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'devsecops')) {
+            return [
+                'theme' => 'SDLC et DevSecOps',
+                'goal' => 'Transformer une faille observee en changement livre proprement.',
+                'entrypoints' => [
+                    ['label' => 'Makefile', 'href' => '/docs/INSTALLATION.md'],
+                    ['label' => 'Fiche session SDLC', 'href' => '/docs/SESSION_04_SDLC_DEVSECOPS.md'],
+                ],
+                'tasks' => [
+                    'Identifier les commandes de verification disponibles.',
+                    'Proposer un controle CI pour une correction securite.',
+                    'Rediger une definition of done securite.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'hardening')) {
+            return [
+                'theme' => 'Security misconfiguration',
+                'goal' => 'Auditer les choix de configuration Symfony, Nginx, cookies et erreurs.',
+                'entrypoints' => [
+                    ['label' => 'Architecture', 'href' => '/docs/ARCHITECTURE.md'],
+                    ['label' => 'Fiche secrets/logs/hardening', 'href' => '/docs/SESSION_07_SECRETS_LOGS_HARDENING.md'],
+                ],
+                'tasks' => [
+                    'Observer les headers HTTP.',
+                    'Lire la configuration security.yaml.',
+                    'Identifier les informations trop visibles en environnement local.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'secrets')) {
+            return [
+                'theme' => 'Secrets et logs',
+                'goal' => 'Identifier les mauvaises pratiques documentees et les logs trop bavards.',
+                'entrypoints' => [
+                    ['label' => 'Bad practices', 'href' => '/docs/bad-practices.md'],
+                    ['label' => 'Guide FOAD', 'href' => '/docs/FOAD_GUIDE.md'],
+                ],
+                'tasks' => [
+                    'Distinguer faux secret pedagogique et vrai secret.',
+                    'Localiser un log contenant une donnee sensible fictive.',
+                    'Proposer une politique de redaction.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'upload')) {
+            return [
+                'theme' => 'Upload vulnerable',
+                'goal' => 'Tester le flux avatar dans le profil et le stockage public des fichiers.',
+                'entrypoints' => [
+                    ['label' => 'Edition profil', 'href' => $this->generateUrl('profile_edit')],
+                    ['label' => 'Banque exercices upload', 'href' => '/docs/EXERCISE_BANK.md'],
+                ],
+                'tasks' => [
+                    'Observer le nom de fichier conserve.',
+                    'Verifier le chemin public de l avatar.',
+                    'Lister les validations attendues.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'fuzzing')) {
+            return [
+                'theme' => 'Memoire et fuzzing',
+                'goal' => 'Utiliser native-lab pour observer crash, correction et regression.',
+                'entrypoints' => [
+                    ['label' => 'Session memoire', 'href' => '/docs/SESSION_09_MEMORY.md'],
+                    ['label' => 'Session fuzzing', 'href' => '/docs/SESSION_10_FUZZING.md'],
+                ],
+                'tasks' => [
+                    'Compiler le mini programme C.',
+                    'Observer un crash local controle.',
+                    'Relancer apres correction.',
+                ],
+            ];
+        }
+
+        if (str_contains($title, 'audit final')) {
+            return [
+                'theme' => 'Audit final',
+                'goal' => 'Assembler les constats web, API, configuration et cycle de developpement.',
+                'entrypoints' => [
+                    ['label' => 'Sujet audit final', 'href' => '/docs/evaluations/AUDIT_FINAL.md'],
+                    ['label' => 'Workbook', 'href' => '/docs/STUDENT_WORKBOOK.md'],
+                ],
+                'tasks' => [
+                    'Prioriser 5 a 8 constats.',
+                    'Associer preuve, impact et remediation.',
+                    'Preparer la restitution courte.',
+                ],
+            ];
+        }
+
+        return [
+            'theme' => 'Exploration metier',
+            'goal' => 'Utiliser cet evenement pour comprendre le flux inscription, commentaires et factures.',
+            'entrypoints' => [
+                ['label' => 'Profil', 'href' => $this->generateUrl('profile_show')],
+                ['label' => 'Factures', 'href' => $this->generateUrl('invoice_index')],
+                ['label' => 'Workbook', 'href' => '/docs/STUDENT_WORKBOOK.md'],
+            ],
+            'tasks' => [
+                'S inscrire a l evenement.',
+                'Verifier le profil et la facture generee.',
+                'Relier le flux aux controles d acces attendus.',
+            ],
+        ];
     }
 }
