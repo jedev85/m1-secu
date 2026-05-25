@@ -8,7 +8,7 @@ Application Symfony volontairement vulnérable pour le module M1 cybersécurité
 - Usage strictement pédagogique, local et encadré.
 - Exécuter dans un environnement isolé.
 - Les données, comptes, factures et secrets sont fictifs.
-- Plusieurs mauvaises pratiques sont intentionnelles afin de servir d'exercices.
+- Plusieurs mauvaises pratiques sont intentionnelles afin de servir d’exercices.
 
 ## Démarrage
 
@@ -40,25 +40,25 @@ Comptes de test:
 
 ## Surface fonctionnelle
 
-L'application gère utilisateurs, événements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et prévisualisation d'URL.
+L’application gère utilisateurs, événements, inscriptions, commentaires, factures, upload d’avatar, admin basique, API JSON et prévisualisation d’URL.
 
-Les pages evenement sont aussi des pages d'atelier. Chaque evenement affiche:
+Les pages événement sont aussi des pages d’atelier. Chaque événement affiche:
 
-- le scenario metier de la faille;
+- le scénario métier de la faille;
 - les zones de test;
-- les notions travaillees;
-- un parcours N1 a N5;
+- les notions travaillées;
+- un parcours N1 à N5;
 - les livrables;
-- les criteres de verification;
+- les critères de vérification;
 - les points de vigilance.
 
-Parcours metier conseille pour comprendre le lab:
+Parcours métier conseillé pour comprendre le lab:
 
 1. Se connecter avec `user1@example.test`.
-2. Ouvrir un evenement depuis `/events`.
-3. Lire le bloc "Atelier associe": il indique la zone de test liee au theme de l evenement.
-4. S'inscrire: le detail evenement affiche le statut d'inscription.
-5. Aller dans `/profile`: l'inscription apparait dans "Mes inscriptions".
+2. Ouvrir un événement depuis `/events`.
+3. Lire le bloc "Atelier associé": il indique la zone de test liée au thème de l’événement.
+4. S’inscrire: le détail de l’événement affiche le statut d’inscription.
+5. Aller dans `/profile`: l’inscription apparaît dans "Mes inscriptions".
 6. Aller dans `/invoices`: une facture fictive alimente les exercices IDOR/API.
 7. Publier un commentaire pour les exercices XSS/CSRF.
 
@@ -86,4 +86,4 @@ Endpoints API principaux:
 
 ## Limites connues
 
-Le projet à été scaffold sans accès réseau Packagist dans l'environnement de création. `composer install` doit être lancé dans un environnement ayant accès à Packagist, ou vià cache Composer interne.
+Le projet a été scaffold sans accès réseau Packagist dans l’environnement de création. `composer install` doit être lancé dans un environnement ayant accès à Packagist, ou via cache Composer interne.
