@@ -33,6 +33,8 @@ Ce parcours sert de reference. Une faille est plus interessante quand on sait qu
 
 Chaque evenement est aussi une porte d'entree pedagogique. Un evenement nomme "SQL Injection" renvoie vers la recherche vulnerable, un evenement "XSS, CSRF" utilise les commentaires de sa propre page, un evenement "API et SSRF" renvoie vers les endpoints JSON et la preview URL. Certaines failles restent techniquement dans des fonctions transverses, mais la page evenement indique ou les tester.
 
+Le bloc "Atelier associe" n'est pas un simple rappel: il contient un scenario, des notions, des exercices N1 a N5, des livrables et des criteres de verification. Il peut donc servir de support direct pendant la seance, meme si les fiches `docs/SESSION_*` restent utiles pour la preparation et la FOAD.
+
 ## Session 01 - Cartographie OWASP
 
 ### Objectifs

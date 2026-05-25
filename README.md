@@ -42,6 +42,16 @@ Comptes de test:
 
 L'application gere utilisateurs, evenements, inscriptions, commentaires, factures, upload d'avatar, admin basique, API JSON et previsualisation d'URL.
 
+Les pages evenement sont aussi des pages d'atelier. Chaque evenement affiche:
+
+- le scenario metier de la faille;
+- les zones de test;
+- les notions travaillees;
+- un parcours N1 a N5;
+- les livrables;
+- les criteres de verification;
+- les points de vigilance.
+
 Parcours metier conseille pour comprendre le lab:
 
 1. Se connecter avec `user1@example.test`.
