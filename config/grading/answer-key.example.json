@@ -1,0 +1,23 @@
+{
+  "max_score": 100,
+  "cases": [
+    {
+      "id": "example-case-01",
+      "points": 50,
+      "endpoints": ["GET /api/example-a"],
+      "categories": ["example_category"],
+      "severities": ["medium", "high"],
+      "terms": ["example behavior", "example condition"],
+      "evidence_terms": ["example proof"]
+    },
+    {
+      "id": "example-case-02",
+      "points": 50,
+      "endpoints": ["POST /api/example-b"],
+      "categories": ["other_example_category"],
+      "severities": ["low", "medium"],
+      "terms": ["second behavior", "second condition"],
+      "evidence_terms": ["second proof"]
+    }
+  ]
+}

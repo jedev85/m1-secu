@@ -14,6 +14,7 @@
 /native-lab/parser_fuzz_target
 /.idea/
 /.vscode/
+/.teacher/
 
 ###> symfony/framework-bundle ###
 /.env.local

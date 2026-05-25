@@ -1,0 +1,37 @@
+{
+  "student": {
+    "name": "Example Student",
+    "email": "student@example.com",
+    "group": "M1"
+  },
+  "target": {
+    "base_url": "https://target.example",
+    "tested_at": "2026-05-24T14:30:00+02:00",
+    "scope": [
+      "GET /api/events",
+      "GET /api/users/{id}",
+      "GET /api/invoices/{id}",
+      "POST /api/profile",
+      "POST /api/preview-url"
+    ]
+  },
+  "findings": [
+    {
+      "endpoint": "GET /api/example-a",
+      "category": "example_category",
+      "severity": "high",
+      "title": "Example finding",
+      "description": "The example behavior appears when the example condition is met.",
+      "evidence": {
+        "request": "GET /api/example-a",
+        "response": "The response contains example proof."
+      },
+      "impact": "Example impact.",
+      "reproduction_steps": [
+        "Send the example request.",
+        "Observe the example proof."
+      ],
+      "remediation": "Apply the example fix."
+    }
+  ]
+}
