@@ -12,7 +12,7 @@ services:
       - database
 
   nginx:
-    image: nginx:1.27-alpine
+    image: nginx:1.27-bookworm
     ports:
       - "8080:80"
     volumes:
@@ -22,7 +22,7 @@ services:
       - php
 
   database:
-    image: postgres:16-alpine
+    image: postgres:16
     environment:
       POSTGRES_DB: eventsecure
       POSTGRES_USER: app
