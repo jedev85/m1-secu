@@ -19,6 +19,12 @@ make install
 
 Application: http://localhost:8080
 
+Si les containers sont déjà démarrés et que vous voulez seulement recréer les comptes et données de démonstration:
+
+```bash
+make demo-data
+```
+
 Comptes de test:
 
 - `user1@example.test` / `password`
@@ -32,6 +38,8 @@ Comptes de test:
 - `make install`: installe Composer, migre et charge les fixtures
 - `make reset`: reconstruit la base et recharge les fixtures
 - `make fixtures`: recharge les données
+- `make demo-data`: cree la base si besoin, migre, charge les fixtures et affiche les comptes
+- `make accounts`: affiche les comptes de test disponibles
 - `make test`: lance les tests
 - `make logs`: suit les logs Docker
 - `make shell`: ouvre un shell PHP
