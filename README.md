@@ -12,6 +12,10 @@ Application Symfony locale pour l’exercice M1 cybersécurité de rapport JSON 
 
 ## Demarrage
 
+Guide detaille:
+
+- `docs/INSTALLATION.md`
+
 ```bash
 make up
 make install
@@ -76,7 +80,7 @@ Consigne du rapport JSON:
 
 - `src/`: application Symfony
 - `templates/`: vues Twig
-- `docs/`: consigne du rapport JSON
+- `docs/`: consigne du rapport JSON et guide d'installation
 - `docker/`: PHP-FPM et Nginx
 
 ## Limites connues
