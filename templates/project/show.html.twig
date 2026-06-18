@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ project.name }}</h1>
+<div class="card">
+    <p><span class="pill">{{ project.status }}</span> {% if project.confidential %}<span class="pill">confidentiel</span>{% endif %}</p>
+    <p>{{ project.description|raw }}</p>
+    <p>Budget: {{ project.budget }} EUR</p>
+    <p>Proprietaire: {{ project.owner.email }}</p>
+    <p>Membres: {% for member in project.members %}{{ member.email }} {% else %}aucun{% endfor %}</p>
+    <p><a href="{{ path('project_edit', {id: project.id}) }}">Modifier</a> | <a href="{{ path('project_delete', {id: project.id}) }}">Supprimer</a> | <a href="{{ path('project_status', {id: project.id, status: 'closed'}) }}">Cloturer</a></p>
+    <form method="get" action="{{ path('project_member_add', {id: project.id}) }}">
+        <input name="user" placeholder="ID utilisateur">
+        <button>Ajouter membre</button>
+    </form>
+</div>
+{% endblock %}

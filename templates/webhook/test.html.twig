@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Test webhook {{ webhook.name }}</h1>
+<div class="card">
+    <p>{{ webhook.url }}</p>
+    <pre>{{ result }}</pre>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ task.title }}</h1>
+<div class="card">
+    <p>{{ task.project.name }} | {{ task.status }} | {{ task.priority }}</p>
+    <div>{{ task.description|raw|nl2br }}</div>
+    <p>Assignee: {{ task.assignedTo ? task.assignedTo.email : 'non assignee' }}</p>
+    <p><a href="{{ path('task_edit', {id: task.id}) }}">Modifier</a> | <a href="{{ path('task_status', {id: task.id, status: 'done'}) }}">Terminer</a></p>
+    <form method="post" action="{{ path('task_comment', {id: task.id}) }}" class="form">
+        <textarea name="comment"></textarea>
+        <button>Ajouter un commentaire</button>
+    </form>
+</div>
+{% endblock %}

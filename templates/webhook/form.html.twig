@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Webhook</h1>
+<form method="post" class="form">
+    <label>Nom <input name="name" value="{{ webhook.name }}"></label>
+    <label>URL <input name="url" value="{{ webhook.url }}"></label>
+    <label>Evenement <input name="event_type" value="{{ webhook.eventType }}"></label>
+    <label>Secret <input name="secret" value="{{ webhook.secret }}"></label>
+    <label><input type="checkbox" name="active" value="1" checked> Actif</label>
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

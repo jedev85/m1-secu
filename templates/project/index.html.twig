@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Projets internes</h1>
+<p><a class="button" href="{{ path('project_new') }}">Nouveau projet</a> <a href="{{ path('project_export_csv') }}">Export CSV</a></p>
+<table>
+    <tr><th>ID</th><th>Nom</th><th>Statut</th><th>Budget</th><th>Proprietaire</th><th>Confidentiel</th></tr>
+    {% for project in projects %}
+        <tr><td>{{ project.id }}</td><td><a href="{{ path('project_show', {id: project.id}) }}">{{ project.name }}</a></td><td>{{ project.status }}</td><td>{{ project.budget }} EUR</td><td>{{ project.owner.email }}</td><td>{{ project.confidential ? 'oui' : 'non' }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

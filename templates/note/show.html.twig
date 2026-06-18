@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ note.title }}</h1>
+<div class="card">
+    <p><span class="pill">{{ note.visibility }}</span> {{ note.author.email }}</p>
+    <div>{{ note.content|raw }}</div>
+    <p><a href="{{ path('note_edit', {id: note.id}) }}">Modifier</a> | <a href="{{ path('note_delete', {id: note.id}) }}">Supprimer</a></p>
+</div>
+{% endblock %}

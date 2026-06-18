@@ -1,0 +1,32 @@
+### Login manuel via navigateur recommande
+GET https://127.0.0.1:8000/login
+
+### Dashboard
+GET https://127.0.0.1:8000/
+
+### Clients
+GET https://127.0.0.1:8000/clients
+
+### Tickets
+GET https://127.0.0.1:8000/tickets
+
+### Projets
+GET https://127.0.0.1:8000/projects
+
+### Taches
+GET https://127.0.0.1:8000/tasks
+
+### Notes
+GET https://127.0.0.1:8000/notes
+
+### Messages
+GET https://127.0.0.1:8000/messages
+
+### Documents
+GET https://127.0.0.1:8000/documents
+
+### API clients
+GET https://127.0.0.1:8000/api/clients
+
+### API projets
+GET https://127.0.0.1:8000/api/projects

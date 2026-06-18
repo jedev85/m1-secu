@@ -2,7 +2,7 @@
 
 Application Symfony volontairement vulnerable pour un TP d'audit securite web en M1 Expert Cybersecurite.
 
-Le contexte simule une PME qui utilise une plateforme interne pour gerer ses utilisateurs, clients, tickets support, documents, factures, exports CSV, parametres applicatifs, import depuis URL et espace admin.
+Le contexte simule une PME qui utilise une plateforme interne pour gerer ses utilisateurs, clients, tickets support, documents, factures, projets internes, taches, notes, messages, webhooks, exports CSV, parametres applicatifs, imports et espace admin.
 
 ## Cadre d'utilisation
 
@@ -21,6 +21,16 @@ symfony server:start
 
 SQLite est utilise par defaut avec `var/auditlab.db`. Avec SQLite, la migration cree le fichier de base si necessaire; `doctrine:database:create` n'est pas indispensable.
 
+Commandes utiles:
+
+```bash
+make install
+make reset-db
+make test
+make audit
+make serve
+```
+
 ## Comptes de demonstration
 
 Tous les comptes utilisent le mot de passe `password`.
@@ -29,7 +39,11 @@ Tous les comptes utilisent le mot de passe `password`.
 | --- | --- |
 | user1@example.com | ROLE_USER |
 | user2@example.com | ROLE_USER |
+| user3@example.com | ROLE_USER |
+| user4@example.com | ROLE_USER |
+| user5@example.com | ROLE_USER |
 | support@example.com | ROLE_SUPPORT |
+| support2@example.com | ROLE_SUPPORT |
 | manager@example.com | ROLE_MANAGER |
 | admin@example.com | ROLE_ADMIN |
 
@@ -83,6 +97,16 @@ Pour au moins cinq corrections concretes, fournissez la vulnerabilite ciblee, un
 ## Points d'entree
 
 Commencez par les menus de l'application apres connexion, puis cartographiez vous-meme les routes HTML, API et flux techniques disponibles localement. Les endpoints non visibles dans l'interface font partie du perimetre d'audit s'ils appartiennent a cette application.
+
+Documents utiles:
+
+- `docs/CONSIGNE_ETUDIANTS.md`
+- `docs/CHECKLIST_AUDIT.md`
+- `docs/TEMPLATE_RAPPORT.md`
+- `docs/TEMPLATE_REMEDIATION.md`
+- `docs/PLAN_COURS_24H.md`
+- `docs/GRILLE_EVALUATION.md`
+- `docs/http-requests.http`
 
 ## Remise
 

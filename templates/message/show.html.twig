@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ message.subject }}</h1>
+<div class="card">
+    <p>De {{ message.sender.email }} a {{ message.recipient.email }} le {{ message.createdAt|date('Y-m-d H:i') }}</p>
+    <div>{{ message.body|raw|nl2br }}</div>
+    <p><a href="{{ path('message_delete', {id: message.id}) }}">Supprimer</a></p>
+</div>
+{% endblock %}

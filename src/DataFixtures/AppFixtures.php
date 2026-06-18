@@ -2,14 +2,21 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\ActivityLog;
 use App\Entity\AppSetting;
 use App\Entity\AuditLog;
 use App\Entity\Client;
 use App\Entity\Comment;
 use App\Entity\Document;
+use App\Entity\InternalNote;
 use App\Entity\Invoice;
+use App\Entity\Message;
+use App\Entity\Project;
+use App\Entity\Setting;
+use App\Entity\Task;
 use App\Entity\Ticket;
 use App\Entity\User;
+use App\Entity\WebhookEndpoint;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -23,13 +30,19 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $users = [];
-        foreach ([
+        $userRows = [
             'user1@example.com' => ['Jean Martin', ['ROLE_USER'], 'Commercial'],
             'user2@example.com' => ['Amina Benali', ['ROLE_USER'], 'Operations'],
+            'user3@example.com' => ['Noah Bernard', ['ROLE_USER'], 'Finance'],
+            'user4@example.com' => ['Lea Durand', ['ROLE_USER'], 'Juridique'],
+            'user5@example.com' => ['Hugo Petit', ['ROLE_USER'], 'Produit'],
             'support@example.com' => ['Sophie Support', ['ROLE_SUPPORT'], 'Support'],
+            'support2@example.com' => ['Karim Support', ['ROLE_SUPPORT'], 'Support'],
             'manager@example.com' => ['Marc Manager', ['ROLE_MANAGER'], 'Direction'],
             'admin@example.com' => ['Alice Admin', ['ROLE_ADMIN'], 'IT'],
-        ] as $email => [$name, $roles, $department]) {
+        ];
+
+        foreach ($userRows as $email => [$name, $roles, $department]) {
             $user = new User();
             $user->email = $email;
             $user->fullName = $name;
@@ -41,101 +54,137 @@ class AppFixtures extends Fixture
             $users[$email] = $user;
         }
 
+        $owners = array_values($users);
         $clients = [];
-        foreach ([
-            ['Atelier Nova', 'contact@atelier-nova.test', '01 42 00 10 10', 'Atelier Nova', 'Contrat support premium. Contact DAF: claire@atelier-nova.test', $users['user1@example.com']],
-            ['Bureau Atlas', 'it@bureau-atlas.test', '01 43 00 20 20', 'Bureau Atlas', 'Relance comptable a prevoir avant fin de mois.', $users['user1@example.com']],
-            ['Cabinet Rivage', 'secretariat@rivage.test', '02 40 33 10 22', 'Cabinet Rivage', 'Client sensible, facturation trimestrielle.', $users['user2@example.com']],
-            ['Delta Retail', 'ops@delta-retail.test', '04 72 11 22 33', 'Delta Retail', '<strong>Migration ERP en cours</strong>', $users['user2@example.com']],
-            ['Helios Sante', 'admin@helios-sante.test', '05 61 44 55 66', 'Helios Sante', 'Donnees de sante simulees: ne pas exposer.', $users['manager@example.com']],
-        ] as $row) {
-            [$name, $email, $phone, $company, $notes, $owner] = $row;
+        $clientNames = ['Atelier Nova', 'Bureau Atlas', 'Cabinet Rivage', 'Delta Retail', 'Helios Sante', 'Innotech Conseil', 'Jardin Urbain', 'Kappa Logistics', 'Lumen Energie', 'Mistral Media', 'Nadir Finance', 'Orion Habitat'];
+        foreach ($clientNames as $i => $name) {
             $client = new Client();
             $client->name = $name;
-            $client->email = $email;
-            $client->phone = $phone;
-            $client->company = $company;
-            $client->notes = $notes;
-            $client->owner = $owner;
+            $client->email = 'contact'.($i + 1).'@'.strtolower(str_replace(' ', '-', $name)).'.test';
+            $client->phone = '01 40 '.str_pad((string) ($i + 10), 2, '0', STR_PAD_LEFT).' '.str_pad((string) ($i + 20), 2, '0', STR_PAD_LEFT).' 00';
+            $client->company = $name;
+            $client->notes = $i % 4 === 0 ? 'Contrat sensible, validation manager requise.' : 'Suivi commercial standard.';
+            $client->owner = $owners[$i % count($owners)];
             $manager->persist($client);
             $clients[] = $client;
         }
 
+        $projects = [];
+        foreach (['Migration ERP', 'Portail Client', 'Refonte Support', 'Audit Fournisseurs', 'Data Room Finance', 'Extranet Partenaires', 'Inventaire Assets', 'Conformite RGPD'] as $i => $name) {
+            $project = new Project();
+            $project->name = $name;
+            $project->description = $i % 3 === 0 ? 'Projet prioritaire avec donnees confidentielles.' : 'Projet interne suivi par plusieurs equipes.';
+            $project->budget = 15000 + ($i * 7200);
+            $project->status = ['draft', 'active', 'blocked', 'closed'][$i % 4];
+            $project->owner = $owners[$i % count($owners)];
+            $project->confidential = $i % 3 === 0;
+            $project->members->add($project->owner);
+            $project->members->add($owners[($i + 2) % count($owners)]);
+            $manager->persist($project);
+            $projects[] = $project;
+        }
+
+        $tasks = [];
+        for ($i = 1; $i <= 20; $i++) {
+            $task = new Task();
+            $task->title = 'Tache projet '.$i;
+            $task->description = 'Action operationnelle a traiter pour le lot '.$i.'.';
+            $task->status = ['todo', 'doing', 'review', 'done'][$i % 4];
+            $task->priority = ['low', 'normal', 'high'][$i % 3];
+            $task->dueDate = new \DateTimeImmutable('+'.$i.' days');
+            $task->assignedTo = $owners[$i % count($owners)];
+            $task->createdBy = $users['manager@example.com'];
+            $task->project = $projects[$i % count($projects)];
+            $manager->persist($task);
+            $tasks[] = $task;
+        }
+
         $tickets = [];
-        foreach ([
-            ['VPN inaccessible', 'Erreur MFA depuis le reseau invite.', 'open', 'high', $clients[0], $users['user1@example.com'], $users['support@example.com']],
-            ['Export comptable', 'Demande export CSV factures mai.', 'pending', 'normal', $clients[1], $users['user1@example.com'], null],
-            ['Acces application RH', 'Compte bloque apres changement email.', 'open', 'normal', $clients[2], $users['user2@example.com'], $users['support@example.com']],
-            ['Incident confidentialite', 'Un document prive est visible depuis une URL directe.', 'open', 'high', $clients[4], $users['manager@example.com'], $users['admin@example.com']],
-        ] as $row) {
-            [$title, $description, $status, $priority, $client, $creator, $assignee] = $row;
+        for ($i = 1; $i <= 15; $i++) {
             $ticket = new Ticket();
-            $ticket->title = $title;
-            $ticket->description = $description;
-            $ticket->status = $status;
-            $ticket->priority = $priority;
-            $ticket->customer = $client;
-            $ticket->createdBy = $creator;
-            $ticket->assignedTo = $assignee;
+            $ticket->title = 'Ticket support '.$i;
+            $ticket->description = 'Demande client '.$i.' avec informations de diagnostic.';
+            $ticket->status = ['open', 'pending', 'closed'][$i % 3];
+            $ticket->priority = ['low', 'normal', 'high'][$i % 3];
+            $ticket->customer = $clients[$i % count($clients)];
+            $ticket->createdBy = $owners[$i % count($owners)];
+            $ticket->assignedTo = $i % 2 === 0 ? $users['support@example.com'] : $users['support2@example.com'];
             $manager->persist($ticket);
             $tickets[] = $ticket;
         }
 
-        foreach ([
-            ['Nous avons reproduit le probleme sur Firefox.', $users['support@example.com'], $tickets[0]],
-            ['Merci de traiter avant vendredi.', $users['user1@example.com'], $tickets[1]],
-            ['Le client signale que le message persiste apres deconnexion.', $users['user2@example.com'], $tickets[2]],
-            ['Verifier la configuration locale avant cloture.', $users['admin@example.com'], $tickets[3]],
-        ] as [$content, $author, $ticket]) {
+        for ($i = 1; $i <= 30; $i++) {
             $comment = new Comment();
-            $comment->content = $content;
-            $comment->author = $author;
-            $comment->ticket = $ticket;
+            $comment->content = 'Commentaire de suivi '.$i.' avec contexte fonctionnel.';
+            $comment->author = $owners[$i % count($owners)];
+            $comment->ticket = $tickets[$i % count($tickets)];
             $manager->persist($comment);
         }
 
-        foreach ([
-            ['INV-2026-001', $clients[0], 12500, 'sent', $users['user1@example.com']],
-            ['INV-2026-002', $clients[1], 7800, 'paid', $users['user1@example.com']],
-            ['INV-2026-003', $clients[2], 21900, 'draft', $users['user2@example.com']],
-            ['INV-2026-004', $clients[4], 45200, 'late', $users['manager@example.com']],
-        ] as [$number, $client, $amount, $status, $owner]) {
+        for ($i = 1; $i <= 10; $i++) {
+            $message = new Message();
+            $message->sender = $owners[$i % count($owners)];
+            $message->recipient = $owners[($i + 3) % count($owners)];
+            $message->subject = 'Message interne '.$i;
+            $message->body = 'Echange interne concernant le client '.$clients[$i % count($clients)]->name.'.';
+            $message->readAt = $i % 2 === 0 ? new \DateTimeImmutable('-'.$i.' hours') : null;
+            $manager->persist($message);
+        }
+
+        for ($i = 1; $i <= 10; $i++) {
             $invoice = new Invoice();
-            $invoice->number = $number;
-            $invoice->client = $client;
-            $invoice->amount = $amount;
-            $invoice->status = $status;
-            $invoice->pdfPath = 'private/invoices/'.$number.'.pdf';
-            $invoice->owner = $owner;
+            $invoice->number = 'INV-2026-'.str_pad((string) $i, 3, '0', STR_PAD_LEFT);
+            $invoice->client = $clients[$i % count($clients)];
+            $invoice->amount = 2500 + ($i * 1750);
+            $invoice->status = ['draft', 'sent', 'paid', 'late'][$i % 4];
+            $invoice->pdfPath = 'private/invoices/'.$invoice->number.'.pdf';
+            $invoice->owner = $owners[$i % count($owners)];
             $manager->persist($invoice);
         }
 
-        foreach ([
-            ['Procedure VPN', 'procedure-vpn.txt', 'text/plain', 'uploads/documents/procedure-vpn.txt', 'team', $users['support@example.com']],
-            ['Contrat Helios', 'contrat-helios-private.pdf', 'application/pdf', 'uploads/documents/contrat-helios-private.pdf', 'private', $users['manager@example.com']],
-            ['Export technique', 'diagnostic.csv', 'text/csv', 'uploads/documents/diagnostic.csv', 'public', $users['admin@example.com']],
-        ] as [$title, $filename, $mime, $path, $visibility, $owner]) {
+        for ($i = 1; $i <= 12; $i++) {
             $document = new Document();
-            $document->title = $title;
-            $document->filename = $filename;
-            $document->originalFilename = $filename;
-            $document->mimeType = $mime;
-            $document->path = $path;
-            $document->visibility = $visibility;
-            $document->uploadedBy = $owner;
+            $document->title = 'Document interne '.$i;
+            $document->filename = 'document-'.$i.'.txt';
+            $document->originalFilename = $document->filename;
+            $document->mimeType = 'text/plain';
+            $document->path = 'uploads/documents/'.$document->filename;
+            $document->visibility = ['private', 'team', 'public'][$i % 3];
+            $document->uploadedBy = $owners[$i % count($owners)];
             $manager->persist($document);
         }
 
-        foreach ([
-            ['info', 'auth', 'Login success for admin@example.com from 127.0.0.1'],
-            ['warning', 'import', 'URL import failed during client synchronization timeout=3'],
-            ['error', 'payment', 'Stripe test key sk_test_51_FAKE_training_secret leaked in stack trace'],
-            ['debug', 'db', 'DATABASE_URL=sqlite:///var/auditlab.db APP_SECRET=local-auditlab-training-secret'],
-        ] as [$level, $source, $message]) {
-            $log = new AuditLog();
-            $log->level = $level;
-            $log->source = $source;
-            $log->message = $message;
+        for ($i = 1; $i <= 12; $i++) {
+            $note = new InternalNote();
+            $note->title = 'Note interne '.$i;
+            $note->content = 'Note metier sur le dossier '.$clients[$i % count($clients)]->name.'.';
+            $note->visibility = ['private', 'team', 'management', 'public'][$i % 4];
+            $note->author = $owners[$i % count($owners)];
+            $note->relatedClient = $clients[$i % count($clients)];
+            $note->relatedProject = $projects[$i % count($projects)];
+            $manager->persist($note);
+        }
+
+        for ($i = 1; $i <= 8; $i++) {
+            $webhook = new WebhookEndpoint();
+            $webhook->name = 'Webhook '.$i;
+            $webhook->url = $i % 2 === 0 ? 'https://127.0.0.1:8000/internal/health' : 'https://example.invalid/hook/'.$i;
+            $webhook->eventType = ['invoice.paid', 'ticket.created', 'project.updated'][$i % 3];
+            $webhook->secret = 'whsec_local_'.$i.'_training';
+            $webhook->active = $i % 3 !== 0;
+            $webhook->createdBy = $owners[$i % count($owners)];
+            $manager->persist($webhook);
+        }
+
+        for ($i = 1; $i <= 10; $i++) {
+            $log = new ActivityLog();
+            $log->actor = $owners[$i % count($owners)];
+            $log->action = ['login', 'client.update', 'invoice.export', 'role.change', 'webhook.test'][$i % 5];
+            $log->targetType = ['User', 'Client', 'Invoice', 'Webhook'][$i % 4];
+            $log->targetId = $i;
+            $log->ipAddress = '127.0.0.'.$i;
+            $log->userAgent = 'AuditLabBrowser/'.$i;
+            $log->details = $i % 4 === 0 ? 'Action realisee avec jeton applicatif local.' : 'Operation metier standard.';
             $manager->persist($log);
         }
 
@@ -144,12 +193,42 @@ class AppFixtures extends Fixture
             ['support_email', 'support-internal@example.com', false],
             ['legacy_api_token', 'legacy-token-123456-local-training', true],
             ['invoice_export_secret', 'csv-export-secret-local', true],
+            ['webhook_default_secret', 'webhook-default-local-secret', true],
+            ['session_timeout_minutes', '480', false],
+            ['feature_import_url', '1', false],
+            ['backup_access_key', 'backup-key-local-training', true],
         ] as [$name, $value, $sensitive]) {
             $setting = new AppSetting();
             $setting->name = $name;
             $setting->value = $value;
             $setting->sensitive = $sensitive;
             $manager->persist($setting);
+
+            $newSetting = new Setting();
+            $newSetting->keyName = $name;
+            $newSetting->value = $value;
+            $newSetting->isSensitive = $sensitive;
+            $newSetting->updatedBy = $users['admin@example.com'];
+            $manager->persist($newSetting);
+        }
+
+        foreach ([
+            ['info', 'auth', 'Login success for admin@example.com from 127.0.0.1'],
+            ['warning', 'import', 'URL import failed during client synchronization timeout=3'],
+            ['error', 'payment', 'Payment provider test key visible in local stack trace'],
+            ['debug', 'db', 'Local SQLite database initialized for training'],
+            ['info', 'webhook', 'Webhook test executed for ticket.created'],
+            ['warning', 'files', 'Document download path fallback used'],
+            ['info', 'admin', 'Settings page opened by manager@example.com'],
+            ['debug', 'api', 'JSON response generated with extended fields'],
+            ['error', 'support', 'Ticket status changed outside workflow'],
+            ['info', 'project', 'Confidential project exported'],
+        ] as [$level, $source, $message]) {
+            $audit = new AuditLog();
+            $audit->level = $level;
+            $audit->source = $source;
+            $audit->message = $message;
+            $manager->persist($audit);
         }
 
         $manager->flush();

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Journal d'activite</h1>
+<form method="get" class="form"><input name="q" value="{{ q }}" placeholder="Recherche"><button>Filtrer</button></form>
+<p><a href="{{ path('activity_export') }}">Export CSV</a></p>
+<table>
+    <tr><th>Date</th><th>Acteur</th><th>Action</th><th>Cible</th><th>IP</th><th>Details</th></tr>
+    {% for log in logs %}
+        <tr><td>{{ log.createdAt|date('Y-m-d H:i') }}</td><td>{{ log.actor ? log.actor.email : 'system' }}</td><td>{{ log.action }}</td><td>{{ log.targetType }} #{{ log.targetId }}</td><td>{{ log.ipAddress }}</td><td>{{ log.details }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

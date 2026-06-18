@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Taches</h1>
+<p><a class="button" href="{{ path('task_new') }}">Nouvelle tache</a> <a href="{{ path('task_mine') }}">Mes taches</a></p>
+<table>
+    <tr><th>ID</th><th>Titre</th><th>Projet</th><th>Statut</th><th>Priorite</th><th>Assignee</th></tr>
+    {% for task in tasks %}
+        <tr><td>{{ task.id }}</td><td><a href="{{ path('task_show', {id: task.id}) }}">{{ task.title }}</a></td><td>{{ task.project.name }}</td><td>{{ task.status }}</td><td>{{ task.priority }}</td><td>{{ task.assignedTo ? task.assignedTo.email : '' }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

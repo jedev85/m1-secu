@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Tache</h1>
+<form method="post" class="form">
+    <label>Titre <input name="title" value="{{ task.title }}"></label>
+    <label>Description <textarea name="description">{{ task.description }}</textarea></label>
+    <label>Statut <input name="status" value="{{ task.status }}"></label>
+    <label>Priorite <input name="priority" value="{{ task.priority }}"></label>
+    <label>Echeance <input type="date" name="due_date" value="{{ task.dueDate ? task.dueDate|date('Y-m-d') : '' }}"></label>
+    <label>Projet <select name="project_id">{% for project in projects %}<option value="{{ project.id }}">{{ project.name }}</option>{% endfor %}</select></label>
+    <label>Assignee <select name="assigned_to"><option></option>{% for user in users %}<option value="{{ user.id }}">{{ user.email }}</option>{% endfor %}</select></label>
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

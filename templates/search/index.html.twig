@@ -3,8 +3,10 @@
 <h1>Recherche globale</h1>
 <form method="get" class="form">
     <input name="q" value="{{ q }}" placeholder="Client, ticket, facture">
+    <input name="type" value="{{ app.request.query.get('type', 'all') }}" placeholder="type">
     <input name="sort" value="{{ app.request.query.get('sort', 'name') }}" placeholder="tri">
     <input name="direction" value="{{ app.request.query.get('direction', 'ASC') }}" placeholder="direction">
+    <input name="status" value="{{ app.request.query.get('status', '') }}" placeholder="statut">
     <button>Rechercher</button>
 </form>
 <h2>Clients</h2>
@@ -13,4 +15,12 @@
 <ul>{% for ticket in tickets %}<li><a href="{{ path('ticket_show', {id: ticket.id}) }}">{{ ticket.title }}</a></li>{% endfor %}</ul>
 <h2>Factures</h2>
 <ul>{% for invoice in invoices %}<li><a href="{{ path('invoice_show', {id: invoice.id}) }}">{{ invoice.number }}</a></li>{% endfor %}</ul>
+<h2>Projets</h2>
+<ul>{% for project in projects %}<li><a href="{{ path('project_show', {id: project.id}) }}">{{ project.name }}</a> - {{ project.status }}</li>{% endfor %}</ul>
+<h2>Notes</h2>
+<ul>{% for note in notes %}<li><a href="{{ path('note_show', {id: note.id}) }}">{{ note.title }}</a> - {{ note.visibility }}</li>{% endfor %}</ul>
+<h2>Messages</h2>
+<ul>{% for message in messages %}<li><a href="{{ path('message_show', {id: message.id}) }}">{{ message.subject }}</a></li>{% endfor %}</ul>
+<h2>Utilisateurs</h2>
+<ul>{% for user in users %}<li>{{ user.email }} - {{ user.fullName }}</li>{% endfor %}</ul>
 {% endblock %}

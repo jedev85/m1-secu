@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Webhooks</h1>
+<p><a class="button" href="{{ path('webhook_new') }}">Nouveau webhook</a></p>
+<table>
+    <tr><th>Nom</th><th>URL</th><th>Evenement</th><th>Secret</th><th>Actif</th><th></th></tr>
+    {% for webhook in webhooks %}
+        <tr><td>{{ webhook.name }}</td><td>{{ webhook.url }}</td><td>{{ webhook.eventType }}</td><td>{{ webhook.secret }}</td><td>{{ webhook.active ? 'oui' : 'non' }}</td><td><a href="{{ path('webhook_test', {id: webhook.id}) }}">tester</a> | <a href="{{ path('webhook_delete', {id: webhook.id}) }}">supprimer</a></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

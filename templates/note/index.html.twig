@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Notes internes</h1>
+<p><a class="button" href="{{ path('note_new') }}">Nouvelle note</a></p>
+<table>
+    <tr><th>Titre</th><th>Visibilite</th><th>Auteur</th><th>Client</th><th>Projet</th></tr>
+    {% for note in notes %}
+        <tr><td><a href="{{ path('note_show', {id: note.id}) }}">{{ note.title }}</a></td><td>{{ note.visibility }}</td><td>{{ note.author.email }}</td><td>{{ note.relatedClient ? note.relatedClient.name : '' }}</td><td>{{ note.relatedProject ? note.relatedProject.name : '' }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -14,8 +14,10 @@ class SearchController extends AbstractController
     public function search(Request $request, EntityManagerInterface $em): Response
     {
         $q = (string) $request->query->get('q', '');
+        $type = (string) $request->query->get('type', 'all');
         $sort = (string) $request->query->get('sort', 'name');
         $dir = (string) $request->query->get('direction', 'ASC');
+        $status = (string) $request->query->get('status', '');
 
         // Recherche historique: conserve les filtres libres utilises par les equipes metier.
         $dql = "SELECT c FROM App\\Entity\\Client c WHERE c.name LIKE '%".$q."%' OR c.company LIKE '%".$q."%' ORDER BY c.".$sort.' '.$dir;
@@ -36,7 +38,11 @@ class SearchController extends AbstractController
             ->setParameter('q', '%'.$q.'%')
             ->getQuery()
             ->getResult();
+        $projects = $type === 'clients' ? [] : $em->createQuery("SELECT p FROM App\\Entity\\Project p WHERE p.name LIKE '%".$q."%'".($status ? " AND p.status = '".$status."'" : ''))->getResult();
+        $notes = $type === 'clients' ? [] : $em->createQueryBuilder()->select('n')->from('App\\Entity\\InternalNote', 'n')->where('n.title LIKE :q OR n.content LIKE :q')->setParameter('q', '%'.$q.'%')->getQuery()->getResult();
+        $messages = $type === 'clients' ? [] : $em->createQueryBuilder()->select('m')->from('App\\Entity\\Message', 'm')->where('m.subject LIKE :q OR m.body LIKE :q')->setParameter('q', '%'.$q.'%')->getQuery()->getResult();
+        $users = $type === 'clients' ? [] : $em->createQueryBuilder()->select('u')->from('App\\Entity\\User', 'u')->where('u.email LIKE :q OR u.fullName LIKE :q')->setParameter('q', '%'.$q.'%')->getQuery()->getResult();
 
-        return $this->render('search/index.html.twig', compact('q', 'clients', 'tickets', 'invoices'));
+        return $this->render('search/index.html.twig', compact('q', 'clients', 'tickets', 'invoices', 'projects', 'notes', 'messages', 'users'));
     }
 }

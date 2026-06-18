@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Projet</h1>
+<form method="post" class="form">
+    <label>Nom <input name="name" value="{{ project.name }}"></label>
+    <label>Description <textarea name="description">{{ project.description }}</textarea></label>
+    <label>Budget <input name="budget" value="{{ project.budget }}"></label>
+    <label>Statut <input name="status" value="{{ project.status }}"></label>
+    <label>Owner ID <input name="owner_id" value="{{ project.owner ? project.owner.id : '' }}"></label>
+    <label><input type="checkbox" name="confidential" value="1" {% if project.confidential %}checked{% endif %}> Confidentiel</label>
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

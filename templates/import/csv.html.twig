@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Import CSV</h1>
+<form method="post" enctype="multipart/form-data" class="form">
+    <label>Type <select name="type"><option value="clients">Clients</option><option value="projects">Projets</option></select></label>
+    <label>Fichier <input type="file" name="file"></label>
+    <label><input type="checkbox" name="commit" value="1"> Importer apres preview</label>
+    <button>Envoyer</button>
+</form>
+{% if error %}<pre class="danger">{{ error }}</pre>{% endif %}
+{% if preview %}
+    <h2>Preview</h2>
+    <table>{% for row in preview %}<tr>{% for col in row %}<td>{{ col }}</td>{% endfor %}</tr>{% endfor %}</table>
+{% endif %}
+{% endblock %}

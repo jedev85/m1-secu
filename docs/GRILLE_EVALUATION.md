@@ -9,7 +9,7 @@
 | Analyse d'impact et criticite | 2 |
 | Plan de remediation | 2 |
 | 5 corrections detaillees | 3 |
-| Clarte professionnelle du rapport | 1 |
+| Clarte professionnelle du rapport et soutenance | 1 |
 
 ## Niveaux attendus
 

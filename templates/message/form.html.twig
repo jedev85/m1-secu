@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Nouveau message</h1>
+<form method="post" class="form">
+    <label>Destinataire <select name="recipient_id">{% for user in users %}<option value="{{ user.id }}">{{ user.email }}</option>{% endfor %}</select></label>
+    <label>Sujet <input name="subject" value="{{ message.subject }}"></label>
+    <label>Message <textarea name="body">{{ message.body }}</textarea></label>
+    <button>Envoyer</button>
+</form>
+{% endblock %}
