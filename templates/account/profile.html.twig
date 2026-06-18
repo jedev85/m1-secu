@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Modifier le profil</h1>
+<form method="post" class="form">
+    <label>Nom complet <input name="fullName" value="{{ app.user.fullName }}"></label>
+    <label>Departement <input name="department" value="{{ app.user.department }}"></label>
+    <label>Bio <textarea name="bio">{{ app.user.bio }}</textarea></label>
+    <label>Role direct <input name="roles[]" value="ROLE_USER"></label>
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Utilisateurs</h1>
+<table>
+    <tr><th>ID</th><th>Email</th><th>Nom</th><th>Roles</th><th>Actions</th></tr>
+    {% for user in users %}
+        <tr><td>{{ user.id }}</td><td>{{ user.email }}</td><td>{{ user.fullName }}</td><td>{{ user.roles|join(', ') }}</td><td><a href="{{ path('admin_user_role', {id: user.id, role: 'ROLE_ADMIN'}) }}">admin</a> | <a href="{{ path('admin_user_role', {id: user.id, role: 'ROLE_USER'}) }}">user</a></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

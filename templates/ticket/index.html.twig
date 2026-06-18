@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Tickets support</h1>
+<p><a class="button" href="{{ path('ticket_new') }}">Nouveau ticket</a></p>
+<table>
+    <tr><th>ID</th><th>Titre</th><th>Client</th><th>Statut</th><th>Priorite</th></tr>
+    {% for ticket in tickets %}
+        <tr><td>{{ ticket.id }}</td><td><a href="{{ path('ticket_show', {id: ticket.id}) }}">{{ ticket.title }}</a></td><td>{{ ticket.customer.name }}</td><td>{{ ticket.status }}</td><td>{{ ticket.priority }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

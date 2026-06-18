@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Client</h1>
+<form method="post" class="form">
+    <label>Nom <input name="name" value="{{ client.name }}"></label>
+    <label>Email <input name="email" value="{{ client.email }}"></label>
+    <label>Telephone <input name="phone" value="{{ client.phone }}"></label>
+    <label>Societe <input name="company" value="{{ client.company }}"></label>
+    <label>Notes <textarea name="notes">{{ client.notes }}</textarea></label>
+    <label>Owner ID <input name="owner_id" value="{{ client.owner ? client.owner.id : '' }}"></label>
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

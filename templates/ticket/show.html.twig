@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ ticket.title }}</h1>
+<div class="card">
+    <p><span class="pill">{{ ticket.status }}</span> <span class="pill">{{ ticket.priority }}</span></p>
+    <p>{{ ticket.description }}</p>
+    <p>Client: {{ ticket.customer.name }} / {{ ticket.customer.email }}</p>
+    <p>Cree par: {{ ticket.createdBy.email }} | Assigne: {{ ticket.assignedTo ? ticket.assignedTo.email : 'non assigne' }}</p>
+    <p><a href="{{ path('ticket_status', {id: ticket.id, status: 'closed'}) }}">Cloturer</a> | <a href="{{ path('ticket_status', {id: ticket.id, status: 'open'}) }}">Reouvrir</a></p>
+</div>
+<h2>Commentaires</h2>
+{% for comment in ticket.comments %}
+    <div class="comment">
+        <strong>{{ comment.author.email }}</strong> <span class="muted">{{ comment.createdAt|date('Y-m-d H:i') }}</span>
+        <div>{{ comment.content|raw }}</div>
+    </div>
+{% endfor %}
+<form method="post" action="{{ path('ticket_comment', {id: ticket.id}) }}" class="form">
+    <textarea name="content"></textarea>
+    <button>Ajouter un commentaire</button>
+</form>
+{% endblock %}

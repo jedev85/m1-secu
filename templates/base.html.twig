@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}AuditLab Symfony{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="{{ path('dashboard') }}">AuditLab Symfony</a>
+    {% if app.user %}
+        <nav>
+            <a href="{{ path('client_index') }}">Clients</a>
+            <a href="{{ path('ticket_index') }}">Tickets</a>
+            <a href="{{ path('document_index') }}">Documents</a>
+            <a href="{{ path('invoice_index') }}">Factures</a>
+            <a href="{{ path('search') }}">Recherche</a>
+            <a href="{{ path('import_url') }}">Import URL</a>
+            <a href="{{ path('admin_dashboard') }}">Admin</a>
+            <a href="{{ path('account') }}">Compte</a>
+            <a href="{{ path('app_logout') }}">Deconnexion</a>
+        </nav>
+    {% endif %}
+</header>
+<main class="container">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash {{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+    {% block body %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ client.name }}</h1>
+<div class="card">
+    <p><strong>Email:</strong> {{ client.email }}</p>
+    <p><strong>Telephone:</strong> {{ client.phone }}</p>
+    <p><strong>Societe:</strong> {{ client.company }}</p>
+    <p><strong>Proprietaire:</strong> {{ client.owner.email }}</p>
+    <p><strong>Notes:</strong><br>{{ client.notes|raw }}</p>
+    <a class="button" href="{{ path('client_edit', {id: client.id}) }}">Modifier</a>
+</div>
+{% endblock %}

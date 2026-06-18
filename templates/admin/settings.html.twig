@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Parametres</h1>
+<form method="post" class="form">
+    {% for setting in settings %}
+        <label>{{ setting.name }}{% if setting.sensitive %} <span class="pill">sensible</span>{% endif %}
+            <input name="settings[{{ setting.id }}]" value="{{ setting.value }}">
+        </label>
+    {% endfor %}
+    <button>Enregistrer</button>
+</form>
+{% endblock %}

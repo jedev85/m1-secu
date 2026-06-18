@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Upload de document</h1>
+<form method="post" enctype="multipart/form-data" class="form">
+    <label>Titre <input name="title"></label>
+    <label>Visibilite <select name="visibility"><option>private</option><option>team</option><option>public</option></select></label>
+    <label>Fichier <input type="file" name="file"></label>
+    <button>Envoyer</button>
+</form>
+{% endblock %}

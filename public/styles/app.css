@@ -1,0 +1,20 @@
+body { margin: 0; font-family: Arial, sans-serif; color: #1f2933; background: #f5f7fb; }
+a { color: #1457a8; text-decoration: none; }
+input, textarea, select, button { font: inherit; padding: 8px; border: 1px solid #ccd4df; border-radius: 4px; }
+textarea { min-height: 110px; }
+button, .button { background: #1457a8; color: white; border: 0; border-radius: 4px; padding: 9px 12px; display: inline-block; }
+table { border-collapse: collapse; width: 100%; background: white; }
+th, td { border-bottom: 1px solid #e1e7ef; padding: 10px; text-align: left; vertical-align: top; }
+.topbar { background: #102033; color: white; padding: 12px 20px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.brand { color: white; font-weight: 700; }
+.topbar nav { display: flex; gap: 14px; flex-wrap: wrap; }
+.topbar nav a { color: #dce8f7; }
+.container { max-width: 1180px; margin: 24px auto; padding: 0 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.card { background: white; border: 1px solid #dfe6ef; border-radius: 6px; padding: 16px; }
+.form { display: grid; gap: 12px; max-width: 760px; }
+.muted { color: #667085; }
+.danger { color: #b42318; }
+.flash { background: #e7f6ee; padding: 10px; border-radius: 4px; margin-bottom: 12px; }
+.comment { border-left: 4px solid #ccd4df; padding: 10px 14px; background: white; margin: 10px 0; }
+.pill { display: inline-block; background: #eef4ff; padding: 2px 7px; border-radius: 10px; font-size: 12px; }

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Factures</h1>
+<table>
+    <tr><th>Numero</th><th>Client</th><th>Montant</th><th>Statut</th><th></th></tr>
+    {% for invoice in invoices %}
+        <tr><td><a href="{{ path('invoice_show', {id: invoice.id}) }}">{{ invoice.number }}</a></td><td>{{ invoice.client.name }}</td><td>{{ invoice.amount }} EUR</td><td>{{ invoice.status }}</td><td><a href="{{ path('invoice_download', {id: invoice.id}) }}">PDF</a></td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

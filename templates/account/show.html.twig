@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Mon compte</h1>
+<div class="grid">
+    <div class="card">
+        <h2>{{ app.user.fullName }}</h2>
+        <p>{{ app.user.email }}</p>
+        <p>{{ app.user.department }}</p>
+        <p>{{ app.user.bio|raw }}</p>
+        <a class="button" href="{{ path('account_profile') }}">Modifier</a>
+    </div>
+    <div class="card">
+        <h2>Email</h2>
+        <form method="post" action="{{ path('account_email') }}" class="form">
+            <input name="email" value="{{ app.user.email }}">
+            <button>Changer l'email</button>
+        </form>
+    </div>
+    <div class="card">
+        <h2>Mot de passe</h2>
+        <form method="post" action="{{ path('account_password') }}" class="form">
+            <input type="password" name="password" placeholder="Nouveau mot de passe">
+            <button>Changer le mot de passe</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

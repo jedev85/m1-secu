@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Facture {{ invoice.number }}</h1>
+<div class="card">
+    <p>Client: {{ invoice.client.name }} ({{ invoice.client.email }})</p>
+    <p>Montant: {{ invoice.amount }} EUR</p>
+    <p>Statut: {{ invoice.status }}</p>
+    <p>Proprietaire: {{ invoice.owner.email }}</p>
+    <p><a class="button" href="{{ path('invoice_download', {id: invoice.id}) }}">Telecharger PDF</a></p>
+</div>
+{% endblock %}

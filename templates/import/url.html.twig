@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Import de fiche client depuis URL</h1>
+<form method="post" class="form">
+    <input name="url" placeholder="https://exemple.local/client.json">
+    <button>Importer</button>
+</form>
+{% if error %}<pre class="danger">{{ error }}</pre>{% endif %}
+{% if content %}
+    <h2>Contenu recu</h2>
+    <pre>{{ content }}</pre>
+{% endif %}
+{% endblock %}

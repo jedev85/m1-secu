@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Logs applicatifs</h1>
+<table>
+    <tr><th>Date</th><th>Niveau</th><th>Source</th><th>Message</th></tr>
+    {% for log in logs %}
+        <tr><td>{{ log.createdAt|date('Y-m-d H:i:s') }}</td><td>{{ log.level }}</td><td>{{ log.source }}</td><td>{{ log.message }}</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Documents internes</h1>
+<p><a class="button" href="{{ path('document_upload') }}">Uploader</a></p>
+<table>
+    <tr><th>Titre</th><th>Fichier</th><th>Visibilite</th><th>Par</th><th></th></tr>
+    {% for document in documents %}
+        <tr>
+            <td>{{ document.title }}</td><td>{{ document.originalFilename }}</td><td>{{ document.visibility }}</td><td>{{ document.uploadedBy.email }}</td>
+            <td><a href="{{ path('document_download', {id: document.id}) }}">telecharger</a> | <a href="{{ path('document_delete', {id: document.id}) }}">supprimer</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

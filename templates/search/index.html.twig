@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Recherche globale</h1>
+<form method="get" class="form">
+    <input name="q" value="{{ q }}" placeholder="Client, ticket, facture">
+    <input name="sort" value="{{ app.request.query.get('sort', 'name') }}" placeholder="tri">
+    <input name="direction" value="{{ app.request.query.get('direction', 'ASC') }}" placeholder="direction">
+    <button>Rechercher</button>
+</form>
+<h2>Clients</h2>
+<ul>{% for client in clients %}<li><a href="{{ path('client_show', {id: client.id}) }}">{{ client.name }}</a> - {{ client.company }}</li>{% endfor %}</ul>
+<h2>Tickets</h2>
+<ul>{% for ticket in tickets %}<li><a href="{{ path('ticket_show', {id: ticket.id}) }}">{{ ticket.title }}</a></li>{% endfor %}</ul>
+<h2>Factures</h2>
+<ul>{% for invoice in invoices %}<li><a href="{{ path('invoice_show', {id: invoice.id}) }}">{{ invoice.number }}</a></li>{% endfor %}</ul>
+{% endblock %}

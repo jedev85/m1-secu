@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Clients</h1>
+<p><a class="button" href="{{ path('client_new') }}">Nouveau client</a> <a href="{{ path('client_export_csv') }}">Export CSV</a></p>
+<table>
+    <tr><th>ID</th><th>Nom</th><th>Societe</th><th>Proprietaire</th><th></th></tr>
+    {% for client in clients %}
+        <tr>
+            <td>{{ client.id }}</td><td><a href="{{ path('client_show', {id: client.id}) }}">{{ client.name }}</a></td>
+            <td>{{ client.company }}</td><td>{{ client.owner.email }}</td>
+            <td>{% if is_granted('ROLE_MANAGER') %}<a href="{{ path('client_delete', {id: client.id}) }}">supprimer</a>{% endif %}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

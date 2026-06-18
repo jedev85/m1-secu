@@ -1,0 +1,4 @@
+Procedure VPN interne
+
+1. Verifier le MFA.
+2. Ouvrir un ticket support en cas d'echec.

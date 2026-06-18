@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Plateforme de gestion interne</h1>
+<p class="muted">Vue operationnelle de la PME.</p>
+<section class="grid">
+    <div class="card"><strong>{{ clientCount }}</strong><br>clients</div>
+    <div class="card"><strong>{{ ticketCount }}</strong><br>tickets support</div>
+    <div class="card"><strong>{{ invoiceCount }}</strong><br>factures</div>
+    <div class="card"><strong>{{ documentCount }}</strong><br>documents</div>
+</section>
+{% endblock %}
