@@ -1,25 +1,22 @@
 .PHONY: install reset-db fixtures test audit serve
 
 install:
-	composer install
-	php bin/console doctrine:migrations:migrate --no-interaction
-	php bin/console doctrine:fixtures:load --no-interaction
+	docker compose up --build -d
 
 reset-db:
-	rm -f var/auditlab.db
-	php bin/console doctrine:migrations:migrate --no-interaction
-	php bin/console doctrine:fixtures:load --no-interaction
+	docker compose down -v
+	docker compose up --build -d
 
 fixtures:
-	php bin/console doctrine:fixtures:load --no-interaction
+	docker compose exec app php bin/console doctrine:fixtures:load --no-interaction
 
 test:
-	php bin/console lint:container
-	php bin/console lint:twig templates
-	php bin/console doctrine:schema:validate
+	docker compose exec app php bin/console lint:container
+	docker compose exec app php bin/console lint:twig templates
+	docker compose exec app php bin/console doctrine:schema:validate
 
 audit:
-	composer audit
+	docker compose exec app composer audit
 
 serve:
-	symfony server:start
+	docker compose up

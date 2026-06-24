@@ -18,6 +18,6 @@ class AppSetting
     #[ORM\Column(type: 'text')]
     public string $value = '';
 
-    #[ORM\Column]
+    #[ORM\Column(name: 'is_sensitive')]
     public bool $sensitive = false;
 }

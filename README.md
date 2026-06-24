@@ -8,9 +8,28 @@ Le contexte simule une PME qui utilise une plateforme interne pour gerer ses uti
 
 Cette application est un support pedagogique local. Elle ne doit jamais etre exposee sur Internet ni utilisee contre une cible reelle. Les tests doivent rester limites a votre machine ou a un environnement de TP explicitement autorise par l'enseignant.
 
-## Installation locale
+## Installation avec Docker
 
-Prerequis: PHP 8.2+, Composer, Symfony CLI.
+Prerequis: Docker Desktop avec Docker Compose.
+
+```bash
+docker compose up --build
+```
+
+L'application est ensuite disponible sur `http://localhost:8000`.
+
+Pour repartir avec une base MySQL vide:
+
+```bash
+docker compose down -v
+docker compose up --build
+```
+
+## Installation sans Docker
+
+Prerequis: PHP 8.2+, extension `pdo_mysql`, Composer, Symfony CLI et MySQL 8.4.
+
+Creer une base `auditlab` et un utilisateur MySQL correspondant a la variable `DATABASE_URL` de `.env`, puis lancer:
 
 ```bash
 composer install
@@ -19,7 +38,7 @@ php bin/console doctrine:fixtures:load
 symfony server:start
 ```
 
-SQLite est utilise par defaut avec `var/auditlab.db`. Avec SQLite, la migration cree le fichier de base si necessaire; `doctrine:database:create` n'est pas indispensable.
+MySQL 8.4 est utilise par defaut.
 
 Commandes utiles:
 
