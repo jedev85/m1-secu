@@ -119,6 +119,7 @@ Commencez par les menus de l'application apres connexion, puis cartographiez vou
 
 Documents utiles:
 
+- `docs/CONTEXTE_METIER_ROLES.md`
 - `docs/CONSIGNE_ETUDIANTS.md`
 - `docs/CHECKLIST_AUDIT.md`
 - `docs/TEMPLATE_RAPPORT.md`
